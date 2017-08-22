@@ -1,7 +1,6 @@
 {
   "name": "mobile-components",
   "devDependencies": {
-    "babel-minify": "^0.2.0",
     "uglifyjs": "*",
     "uglify-es": "*"
   },
