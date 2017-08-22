@@ -6,8 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <title>Mobile Components Demo</title> 
 
-<script src="lib/html-imports.min.js"></script>
-<script src="lib/custom-elements.min.js"></script>
+<script src="lib/webcomponents-loader.js"></script>
 
 <link rel="import" href="../custom-elements/view-controller.html">
 <link rel="import" href="../custom-elements/back-icon.html">
@@ -42,7 +41,8 @@
 <script src="app/simpleViewController.js"></script>
 
 <script>
-    const navigator = new moko.StackNavigator('cover-horizontal', {
+    const init = _ => {
+        const navigator = new moko.StackNavigator('cover-horizontal', {
                     options: { title: 'Index'},
                     viewController: BlackSimpleViewController
                 })
@@ -64,5 +64,14 @@
                 1000)
             },
         1000)
+    }
+
+    if (!('import' in document.createElement('link'))) {
+        window.addEventListener('WebComponentsReady', _ => {
+            init()
+        });
+    } else {
+        init()
+    } 
 </script>
 </html> 

@@ -7,8 +7,7 @@
 
 <title>Mobile Components Tabbar Demo</title> 
 
-    <!--<script src="lib/html-imports.min.js"></script>
-    <script src="lib/custom-elements.min.js"></script>-->
+<script src="lib/webcomponents-loader.js"></script>
 
 <link rel="import" href="../custom-elements/view-controller.html">
 <link rel="import" href="../custom-elements/tab-bar.html">
@@ -77,12 +76,22 @@
 <script src="app/simpleViewController.js"></script>
 
 <script>
-    const navigator = document.querySelector('scell-zone-navigator')
-    const tabbar = document.querySelector('scell-tab-bar')
-    tabbar.navigator = navigator
-    navigator.push({
-        viewController:View4Controller,
-        title:"Red"
-    })
+    const init = _ => {
+        const navigator = document.querySelector('scell-zone-navigator')
+        const tabbar = document.querySelector('scell-tab-bar')
+        tabbar.navigator = navigator
+        navigator.push({
+            viewController:View4Controller,
+            title:"Red"
+        })
+    }
+
+    if (!('import' in document.createElement('link'))) {
+        window.addEventListener('WebComponentsReady', _ => {
+            init()
+        });
+    } else {
+        init()
+    } 
 </script>
 </html> 

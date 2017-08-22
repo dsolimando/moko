@@ -7,6 +7,8 @@
 
 <title>Mobile Components Push Navigatore Demo</title> 
 
+<script src="lib/webcomponents-loader.js"></script>
+
 <link rel="import" href="../custom-elements/view-controller.html">
 
 <script src="../js/push-navigator.js"></script>
@@ -36,10 +38,19 @@
 
 <script>
    
-    const navigator = new moko.PushNavigator()
-    navigator.push({
-        viewController:View3ControllerBlack
-    })
+   const init = _ => {
+        const navigator = new moko.PushNavigator()
+        navigator.push({
+            viewController:View3ControllerBlack
+        })
+   }
 
+   if (!('import' in document.createElement('link'))) {
+        window.addEventListener('WebComponentsReady', _ => {
+            init()
+        });
+   } else {
+       init()
+   } 
 </script>
 </html> 

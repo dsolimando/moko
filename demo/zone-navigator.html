@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <title>Mobile Componenets Zone Navigatore Demo</title> 
+
+<script src="lib/webcomponents-loader.js"></script>
+
 <link rel="import" href="../custom-elements/view-controller.html">
 <link rel="import" href="../custom-elements/zone-navigator.html">
 
@@ -24,23 +27,33 @@
 <script src="app/simpleViewController.js"></script>
 
 <script>
-    const navigator = document.querySelector('scell-zone-navigator')
-    navigator.push({
-        viewController:RedSimpleViewController,
-        title:"Red"
-    })
-
-    setTimeout( _ => {
+    const init = _ => {
+        const navigator = document.querySelector('scell-zone-navigator')
         navigator.push({
-            viewController:BlackSimpleViewController,
-            title:"Black"
+            viewController:RedSimpleViewController,
+            title:"Red"
         })
+
         setTimeout( _ => {
             navigator.push({
-                viewController:GreenSimpleViewController,
-                title:"Green"
+                viewController:BlackSimpleViewController,
+                title:"Black"
             })
+            setTimeout( _ => {
+                navigator.push({
+                    viewController:GreenSimpleViewController,
+                    title:"Green"
+                })
+            },1000)
         },1000)
-    },1000)
+    }
+
+    if (!('import' in document.createElement('link'))) {
+        window.addEventListener('WebComponentsReady', _ => {
+            init()
+        });
+    } else {
+        init()
+    } 
 </script>
 </html> 
