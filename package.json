@@ -5,6 +5,6 @@
     "uglify-es": "*"
   },
   "scripts": {
-    "prepublish": "./node_modules/.bin/uglifyjs  js/*.js -o dist/moco.min.js -c -m --toplevel"
+    "prepublish": "./node_modules/.bin/uglifyjs  js/*.js -o dist/moko.min.js -c -m --toplevel"
   }
 }
