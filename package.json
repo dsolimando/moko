@@ -2,7 +2,8 @@
   "name": "mobile-components",
   "devDependencies": {
     "babel-minify": "^0.2.0",
-    "uglifyjs": "*"
+    "uglifyjs": "*",
+    "uglify-es": "*"
   },
   "scripts": {
     "prepublish": "./node_modules/.bin/uglifyjs  js/*.js -o dist/moco.min.js -c -m --toplevel"
