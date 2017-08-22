@@ -1,5 +1,5 @@
 mobileComponents = window.mobileComponents || {}
-moco = mobileComponents
+moko = mobileComponents
 
 ;( _ => {
     class PushNavigator  {
@@ -20,5 +20,5 @@ moco = mobileComponents
         }
     }
 
-    moco.PushNavigator = PushNavigator
+    moko.PushNavigator = PushNavigator
 })()

@@ -1,6 +1,6 @@
 
 mobileComponents = window.mobileComponents || {}
-moco = mobileComponents
+moko = mobileComponents
 
 ;( _ => {
     class StackState {
@@ -243,6 +243,6 @@ moco = mobileComponents
         }
     }
 
-    moco.StackState = StackState
-    moco.StackNavigator = StackNavigator
+    moko.StackState = StackState
+    moko.StackNavigator = StackNavigator
 })()

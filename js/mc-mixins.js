@@ -1,6 +1,6 @@
 
 mobileComponents = window.mobileComponents || {};
-moco = mobileComponents
+moko = mobileComponents
 mobileComponents.controllerMixins = mobileComponents.controllerMixins || {
     
      /**

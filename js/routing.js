@@ -1,6 +1,6 @@
 
 mobileComponents = window.mobileComponents || {}
-moco = mobileComponents
+moko = mobileComponents
 mobileComponents.urlRouting = mobileComponents.urlRouting || {
 
     handleUrlRouting (routingData) {
