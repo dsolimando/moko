@@ -1,0 +1,68 @@
+<!DOCTYPE html> 
+<html> 
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>Mobile Components Demo</title> 
+
+<script src="lib/html-imports.min.js"></script>
+<script src="lib/custom-elements.min.js"></script>
+
+<link rel="import" href="../custom-elements/view-controller.html">
+<link rel="import" href="../custom-elements/back-icon.html">
+<link rel="import" href="../custom-elements/navigation-bar.html">
+
+<script src="../js/stack-navigator.js"></script>
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    scell-navigation-bar {
+        height: 45px;
+        border-bottom: 1px solid #ccc;
+        box-shadow: 0px 0px 2px #aaa;
+        color: #777;
+    }
+
+</style>
+<body></body>
+
+<template id="view1">
+    <scell-view>
+        <span>WBla bla bla</span>
+        <button>close</button>
+        <button id="b2">open</button>
+    </scell-view>
+</template>
+
+
+<script src="app/simpleViewController.js"></script>
+
+<script>
+    const navigator = new moco.StackNavigator('cover-horizontal', {
+                    options: { title: 'Index'},
+                    viewController: BlackSimpleViewController
+                })
+
+        setTimeout(
+            _ => {
+                navigator.push({
+                    options: { title: 'Page1'},
+                    viewController: RedSimpleViewController
+                })
+
+                setTimeout(
+                    _ => {
+                        navigator.push({
+                            options: { title: 'Page2'},
+                            viewController: GreenSimpleViewController
+                        })
+                    },
+                1000)
+            },
+        1000)
+</script>
+</html> 

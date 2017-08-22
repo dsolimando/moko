@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html> 
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<title>Mobile Components Tabbar Demo</title> 
+
+    <!--<script src="lib/html-imports.min.js"></script>
+    <script src="lib/custom-elements.min.js"></script>-->
+
+<link rel="import" href="../custom-elements/view-controller.html">
+<link rel="import" href="../custom-elements/tab-bar.html">
+<link rel="import" href="../custom-elements/hamburger-icon.html">
+<link rel="import" href="../custom-elements/navigation-bar.html">
+<link rel="import" href="../custom-elements/drawer.html">
+<link rel="import" href="../custom-elements/zone-navigator.html">
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    #aa {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: #000;
+    }
+
+    scell-tab-bar {
+        background: #000;
+        color: #fff;
+    }
+
+    scell-navigation-bar {
+        background: #000;
+        color: #fff;
+        height: 50px;
+    }
+
+    #view1 {
+        padding: 10px;
+        padding-top: 6  0px;
+    }
+    
+</style>
+<body>
+    
+    <scell-view id="container">
+        
+    </scell-view>
+    
+    <scell-tab-bar>
+        <scell-tab title="tab1"></scell-tab>
+        <scell-tab title="tab2"></scell-tab>
+        <scell-tab title="tab3"></scell-tab>
+        <scell-tab title="tab4"></scell-tab>
+    </scell-tab-bar>
+    <scell-zone-navigator container-selector="#container"></scell-zone-navigator> 
+</body>
+
+<template id="view4">
+    <scell-view id="view1">
+        <span>WBla bla bla</span>
+        <button>close</button>
+        <button id="b2">open</button>
+    </scell-view>
+    <scell-navigation-bar title="My App">
+        <scell-hamburger-button color="#fff"></scell-hamburger-button>
+    </scell-navigation-bar>
+    <scell-drawer width="75%">
+        <div id="aa">
+            <span>hello</span>
+        </div>
+    </scell-drawer>
+</template> 
+
+<script src="app/simpleViewController.js"></script>
+
+<script>
+    const navigator = document.querySelector('scell-zone-navigator')
+    const tabbar = document.querySelector('scell-tab-bar')
+    tabbar.navigator = navigator
+    navigator.push({
+        viewController:View4Controller,
+        title:"Red"
+    })
+</script>
+</html> 
