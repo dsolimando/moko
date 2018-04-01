@@ -7,24 +7,25 @@
 
 <title>Mobile Components Push Navigatore Demo</title> 
 
-<script src="lib/webcomponents-loader.js"></script>
-
-<link rel="import" href="../custom-elements/view-controller.html">
-
-<script src="../js/push-navigator.js"></script>
-
 <style>
     body {
         font-family: Arial, Helvetica, sans-serif;
     }
     button {
         color: #fff;
+    }    
+
+    scell-view {
+        color: #fff;
     }
 
-    
+    scell-view > button {
+        color: #333;
+    }
 </style>
 
-<body></body>
+<body>
+</body>
 
 <template id="view3">
     <scell-view transition="cover-vertical">
@@ -34,23 +35,18 @@
     </scell-view>
 </template>
 
-<script src="app/simpleViewController.js"></script>
-
-<script>
-   
-   const init = _ => {
-        const navigator = new moko.PushNavigator()
-        navigator.push({
-            viewController:View3ControllerBlack
-        })
-   }
-
-   if (!('import' in document.createElement('link'))) {
-        window.addEventListener('WebComponentsReady', _ => {
-            init()
-        });
-   } else {
-       init()
-   } 
+<script type="module">
+    
+    import PushNavigator from '../dist/push-navigator.js'
+    import '../dist/view-controller-ce.js'
+    
+    import {
+        View3ControllerBlack
+    } from './app/simpleViewController.js' 
+    
+    const navigator = new PushNavigator()
+    navigator.push({
+        viewController:View3ControllerBlack
+    })
 </script>
 </html> 

@@ -6,14 +6,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <title>Mobile Components Demo</title> 
 
-<script src="lib/webcomponents-loader.js"></script>
-
-<link rel="import" href="../custom-elements/view-controller.html">
-<link rel="import" href="../custom-elements/back-icon.html">
-<link rel="import" href="../custom-elements/navigation-bar.html">
-
-<script src="../js/stack-navigator.js"></script>
-
 <style>
     body {
         font-family: Arial, Helvetica, sans-serif;
@@ -37,41 +29,41 @@
     </scell-view>
 </template>
 
+<script type="module">
 
-<script src="app/simpleViewController.js"></script>
+import '../dist/view-controller-ce.js'
+import '../dist/back-icon-ce.js'
+import '../dist/navigation-bar-ce.js'
 
-<script>
-    const init = _ => {
-        const navigator = new moko.StackNavigator('cover-horizontal', {
-                    options: { title: 'Index'},
-                    viewController: BlackSimpleViewController
-                })
+import { StackNavigator } from '../dist/stack-navigator.js'
+
+import {
+    BlackSimpleViewController,
+    RedSimpleViewController,
+    GreenSimpleViewController
+} from './app/simpleViewController.js'
+
+const navigator = new StackNavigator('cover-horizontal', {
+    options: { title: 'Index'},
+    viewController: BlackSimpleViewController
+})
+
+setTimeout(
+    _ => {
+        navigator.push({
+            options: { title: 'Page1'},
+            viewController: RedSimpleViewController
+        })
 
         setTimeout(
             _ => {
                 navigator.push({
-                    options: { title: 'Page1'},
-                    viewController: RedSimpleViewController
+                    options: { title: 'Page2'},
+                    viewController: GreenSimpleViewController
                 })
-
-                setTimeout(
-                    _ => {
-                        navigator.push({
-                            options: { title: 'Page2'},
-                            viewController: GreenSimpleViewController
-                        })
-                    },
-                1000)
             },
         1000)
-    }
-
-    if (!('import' in document.createElement('link'))) {
-        window.addEventListener('WebComponentsReady', _ => {
-            init()
-        });
-    } else {
-        init()
-    } 
+    },
+1000)
 </script>
 </html> 

@@ -1,24 +1,17 @@
-mobileComponents = window.mobileComponents || {}
-moko = mobileComponents
+export default class PushNavigator  {
 
-;( _ => {
-    class PushNavigator  {
+    push (state) {
+        state.props = state.props || {}
+        const controller = new state.viewController(state.props)
+        controller.navigator = this
+        const view = controller.render()
+        document.body.appendChild(view)
 
-        push (state) {
-            state.props = state.props || {}
-            const controller = new state.viewController(state.props)
-            controller.navigator = this
-            const view = controller.render()
-            document.body.appendChild(view)
+        if (view.nodeName == '#document-fragment')
+            view = document.body.lastElementChild
 
-            if (view.nodeName == '#document-fragment')
-                view = document.body.lastElementChild
-
-            setTimeout( _ => {
-                view.render()
-            },64)
-        }
+        setTimeout( _ => {
+            view.render()
+        },64)
     }
-
-    moko.PushNavigator = PushNavigator
-})()
+}

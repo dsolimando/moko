@@ -7,15 +7,6 @@
 
 <title>Mobile Components Tabbar Demo</title> 
 
-<script src="lib/webcomponents-loader.js"></script>
-
-<link rel="import" href="../custom-elements/view-controller.html">
-<link rel="import" href="../custom-elements/tab-bar.html">
-<link rel="import" href="../custom-elements/hamburger-icon.html">
-<link rel="import" href="../custom-elements/navigation-bar.html">
-<link rel="import" href="../custom-elements/drawer.html">
-<link rel="import" href="../custom-elements/zone-navigator.html">
-
 <style>
     body {
         font-family: Arial, Helvetica, sans-serif;
@@ -73,25 +64,21 @@
     </scell-drawer>
 </template> 
 
-<script src="app/simpleViewController.js"></script>
+<script type="module">
+    
+    import '../dist/moko-ce.js'
+    import '../dist/zone-navigator-ce.js'
 
-<script>
-    const init = _ => {
-        const navigator = document.querySelector('scell-zone-navigator')
-        const tabbar = document.querySelector('scell-tab-bar')
-        tabbar.navigator = navigator
-        navigator.push({
-            viewController:View4Controller,
-            title:"Red"
-        })
-    }
+    import {
+        View4Controller
+    } from './app/simpleViewController.js' 
 
-    if (!('import' in document.createElement('link'))) {
-        window.addEventListener('WebComponentsReady', _ => {
-            init()
-        });
-    } else {
-        init()
-    } 
+    const navigator = document.querySelector('scell-zone-navigator')
+    const tabbar = document.querySelector('scell-tab-bar')
+    tabbar.navigator = navigator
+    navigator.push({
+        viewController:View4Controller,
+        title:"Red"
+    })
 </script>
 </html> 

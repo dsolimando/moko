@@ -6,11 +6,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <title>Mobile Componenets Zone Navigatore Demo</title> 
 
-<script src="lib/webcomponents-loader.js"></script>
-
-<link rel="import" href="../custom-elements/view-controller.html">
-<link rel="import" href="../custom-elements/zone-navigator.html">
-
 <body>
     <scell-view id="container"></scell-view>
     <scell-zone-navigator container-selector="#container"></scell-zone-navigator> 
@@ -24,11 +19,20 @@
     </scell-view>
 </template> 
 
-<script src="app/simpleViewController.js"></script>
+<script type="module">
 
-<script>
-    const init = _ => {
-        const navigator = document.querySelector('scell-zone-navigator')
+    import {
+        RedSimpleViewController,
+        BlackSimpleViewController,
+        GreenSimpleViewController
+    } from './app/simpleViewController.js' 
+
+    import '../dist/view-controller-ce.js'
+    import '../dist/zone-navigator-ce.js'
+    
+    const navigator = document.querySelector('scell-zone-navigator')
+    
+    const startMovie = _ => {
         navigator.push({
             viewController:RedSimpleViewController,
             title:"Red"
@@ -44,16 +48,13 @@
                     viewController:GreenSimpleViewController,
                     title:"Green"
                 })
+                setTimeout( _ => {
+                    startMovie()
+                },1000)
             },1000)
         },1000)
     }
 
-    if (!('import' in document.createElement('link'))) {
-        window.addEventListener('WebComponentsReady', _ => {
-            init()
-        });
-    } else {
-        init()
-    } 
+    startMovie()
 </script>
 </html> 

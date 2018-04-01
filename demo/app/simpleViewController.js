@@ -2,7 +2,7 @@ const $template  = document.querySelector('#view1')
 const $template4  = document.querySelector('#view4')
 const $template3 = document.querySelector('#view3')
 
-class BlackSimpleViewController  {
+export class BlackSimpleViewController  {
 
     constructor() {
         this.$el = $template.content.cloneNode(true).firstElementChild
@@ -26,7 +26,7 @@ class BlackSimpleViewController  {
     }
 }
 
-class RedSimpleViewController  {
+export class RedSimpleViewController  {
 
     constructor() {
         this.$el = $template.content.cloneNode(true).firstElementChild
@@ -43,7 +43,7 @@ class RedSimpleViewController  {
     }
 }
 
-class GreenSimpleViewController  {
+export class GreenSimpleViewController  {
 
     constructor() {
         this.$el = $template.content.cloneNode(true).firstElementChild
@@ -60,7 +60,7 @@ class GreenSimpleViewController  {
     }
 }
 
-class View4Controller {
+export class View4Controller {
 
     constructor() {
         this.$el = $template4.content.cloneNode(true)
@@ -83,7 +83,7 @@ class View4Controller {
     }
 }
 
-class View3ControllerBlack {
+export class View3ControllerBlack {
     
     constructor() {
         this.$el = $template3.content.cloneNode(true).firstElementChild
@@ -101,7 +101,7 @@ class View3ControllerBlack {
     }
 } 
 
-class View3ControllerRed {
+export class View3ControllerRed {
     constructor() {
         this.$el = $template3.content.cloneNode(true).firstElementChild
         this.$el.style.background = 'red'

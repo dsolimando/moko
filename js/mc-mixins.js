@@ -1,7 +1,4 @@
-
-mobileComponents = window.mobileComponents || {};
-moko = mobileComponents
-mobileComponents.controllerMixins = mobileComponents.controllerMixins || {
+export default {
     
      /**
      * Return the root DOM $el fielf handled by this controller 

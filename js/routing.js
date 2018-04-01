@@ -1,7 +1,4 @@
-
-mobileComponents = window.mobileComponents || {}
-moko = mobileComponents
-mobileComponents.urlRouting = mobileComponents.urlRouting || {
+export default {
 
     handleUrlRouting (routingData) {
         this.routingData = routingData

@@ -1,0 +1,1 @@
+export default class PushNavigator{push(e){e.props=e.props||{};const o=new e.viewController(e.props);o.navigator=this;const t=o.render();document.body.appendChild(t),"#document-fragment"==t.nodeName&&(t=document.body.lastElementChild),setTimeout(e=>{t.render()},64)}};
