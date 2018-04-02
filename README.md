@@ -13,7 +13,7 @@ Each of these web components are available as ES6 modules (see the [dist](https:
 
 ### moko - native SDK's comparison table
 
-| Moko          | Ios              | Android                  |
+| Moko          | iOS              | Android                  |
 | ------------- |----------------  | ---                      |
 | [View](https://github.com/dsolimando/moko/blob/master/custom-elements/view-controller/view-controller.js)          | UIViewController | Activity                 |
 | [TabBar](https://github.com/dsolimando/moko/blob/master/custom-elements/tab-bar/tab-bar.js)        | UITabBar         | BottomNavigationView     |
