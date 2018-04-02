@@ -3,7 +3,7 @@ A lightweight WebComponents based mobile JS lib inspired by native mobile SDK's.
 
 Moko provides the basic stuffs you need in order to develop a mobile web app. Things like:
 
-* a view controller with built-in render animations 
+* a basic view with built-in render animations 
 * a tab-bar
 * a navigation bar
 * a drawer
