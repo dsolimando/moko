@@ -6,7 +6,7 @@ tabBarTemplate.innerHTML = tabBarTemplateString
 if (window.ShadyCSS)
     ShadyCSS.prepareTemplate(tabBarTemplate,'scell-tab-bar')
 
-export class ScellTab extends HTMLElement {
+export class Tab extends HTMLElement {
     constructor() {
         super()
     }
@@ -31,9 +31,9 @@ export class ScellTab extends HTMLElement {
         }
     }
 }
-customElements.define('scell-tab', ScellTab )
+customElements.define('scell-tab', Tab )
 
-export class ScellTabBar extends HTMLElement {
+export class TabBar extends HTMLElement {
     constructor() {
         super()
         const shadowRoot = this.attachShadow({mode:'open'})
@@ -73,4 +73,4 @@ export class ScellTabBar extends HTMLElement {
     }
 }
 
-customElements.define('scell-tab-bar', ScellTabBar) 
+customElements.define('scell-tab-bar', TabBar) 
