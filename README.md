@@ -9,6 +9,8 @@ Moko provides the basic stuffs you need in order to develop a mobile web app. Th
 * a drawer
 * an hamburger icon
 
+Each of these web components are available as ES6 modules (see the [dist](https://github.com/dsolimando/moko/tree/master/dist) folder).
+
 ### moko - native SDK's comparison table
 
 | Moko          | Ios              | Android                  |
