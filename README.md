@@ -15,7 +15,7 @@ It also provides [React Navigation](https://reactnavigation.org) inspired naviga
 * a zone navigator
 * a stack navigator
 
-A navigator handles routing aspects of an app and transitions between views. Tipical scenario are:
+A navigator handles routing aspects of an app and transitions between views. Typical scenario are:
 
 * Pushing a view on screen with an from bottom or from right animation (push navigator)
 * Replacing the content of a view with another content ( zone navigator)
