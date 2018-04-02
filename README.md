@@ -28,7 +28,7 @@ Moko also provides [React Navigation](https://reactnavigation.org) inspired navi
 * a zone navigator
 * a stack navigator
 
-A navigator handles routing aspects of an app and transitions between views. Typical scenario are:
+A navigator handles routing aspects and transitions between views. Typical scenario are:
 
 * Pushing a view on screen with an from bottom or from right animation (push navigator)
 * Replacing the content of a view with another content ( zone navigator)
@@ -42,7 +42,7 @@ navigator.push({
 })
 ```
 
-The viewController class must implement the folling interface:
+The viewController class must implement the following interface:
 
 ```Javascript
 interface Controller {
