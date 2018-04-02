@@ -1,4 +1,5 @@
 NPM_BIN=./node_modules/.bin
+VERSION=1.0
 	
 all: back-icon drawer hamburger-icon navigation-bar tab-bar view zone-navigator push-navigator stack-navigator routing moko-mixins ce navigators
 
@@ -37,6 +38,9 @@ routing:
 
 moko-mixins:
 	$(NPM_BIN)/uglifyjs js/mc-mixins.js -o dist/moko-mixins.js -c -m
+
+tar:
+	tar -czvf moko-$(VERSION).tar.gz dist
 
 ce:
 	$(NPM_BIN)/webpack --mode production --module-bind html=raw-loader \
