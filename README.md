@@ -22,7 +22,7 @@ Each of these web components are available as ES6 modules (see the [dist](https:
 
 ## Navigators
 
-It also provides [React Navigation](https://reactnavigation.org) inspired navigators:
+Moko also provides [React Navigation](https://reactnavigation.org) inspired navigators:
 
 * a push navigator
 * a zone navigator
