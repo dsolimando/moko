@@ -1,12 +1,11 @@
 {
   "name": "mobile-components",
   "devDependencies": {
-    
-    "uglify-es": "*",
-    "webpack": "*",
-    "webpack-cli":"*",
-		"raw-loader": "*",
-		"webpack-uglify-js-plugin": "*"
+    "rollup": "*",
+    "rollup-plugin-html": "*",
+    "rollup-plugin-uglify": "*",
+    "rollup-plugin-string": "*",
+    "uglify-es": "*"
   },
   "scripts": {
     "prepublish": "make clean; make all;"

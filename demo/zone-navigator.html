@@ -11,8 +11,17 @@
     <scell-zone-navigator container-selector="#container"></scell-zone-navigator> 
 </body>
 
+<style>
+    moko-text-input {
+        color: #999;
+        --moko-input-background-color: #fefefe;
+    }
+</style>
+
 <template id="view1">
     <scell-view>
+        <moko-text-input icon="search"></moko-text-input>
+        <moko-icon name="x"></moko-icon>
         <span>WBla bla bla</span>
         <button>close</button>
         <button id="b2">open</button>
@@ -27,8 +36,10 @@
         GreenSimpleViewController
     } from './app/simpleViewController.js' 
 
+    import '../dist/text-input-ce.js'
     import '../dist/view-controller-ce.js'
     import '../dist/zone-navigator-ce.js'
+    import '../dist/icon-ce.js'
     
     const navigator = document.querySelector('scell-zone-navigator')
     
@@ -39,19 +50,19 @@
         })
 
         setTimeout( _ => {
-            navigator.push({
-                viewController:BlackSimpleViewController,
-                title:"Black"
-            })
-            setTimeout( _ => {
-                navigator.push({
-                    viewController:GreenSimpleViewController,
-                    title:"Green"
-                })
-                setTimeout( _ => {
-                    startMovie()
-                },1000)
-            },1000)
+            // navigator.push({
+            //     viewController:BlackSimpleViewController,
+            //     title:"Black"
+            // })
+            // setTimeout( _ => {
+            //     navigator.push({
+            //         viewController:GreenSimpleViewController,
+            //         title:"Green"
+            //     })
+            //     setTimeout( _ => {
+            //         startMovie()
+            //     },1000)
+            // },1000)
         },1000)
     }
 

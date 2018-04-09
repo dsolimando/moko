@@ -1,1 +1,48 @@
-!function(t){var e={};function n(s){if(e[s])return e[s].exports;var o=e[s]={i:s,l:!1,exports:{}};return t[s].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=t,n.c=e,n.d=function(t,e,s){n.o(t,e)||Object.defineProperty(t,e,{configurable:!1,enumerable:!0,get:s})},n.r=function(t){Object.defineProperty(t,"__esModule",{value:!0})},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=1)}([function(t,e){t.exports='<style>\n    .background-cache {\n        position: absolute;\n        width: 100%;\n        height: 100%;\n        left: 0;\n        top: 0;\n        transition: opacity 0.2s 0.1s linear;\n        background: #000;\n        opacity: 0;\n        z-index: 1;\n    }  \n    aside {\n        position: absolute;\n        width: 50%;\n        border-left: 1px solid #333;\n        height: 100%;\n        transition: transform 0.3s  cubic-bezier(0.25, 0.46, 0.45, 0.94);\n        top: 0;\n        z-index: 2;\n        left: 0;\n    }\n\n    :host {\n        position: absolute;\n        width: 100%;\n        height: 100%;\n        left: 0;\n        top: 0;\n    }\n</style>\n<aside>\n    <slot></slot>\n</aside>\n<div class="background-cache"></div>'},function(t,e,n){"use strict";n.r(e);var s=n(0),o=n.n(s);const i=document.createElement("template");i.innerHTML=o.a,window.ShadyCSS&&ShadyCSS.prepareTemplate(i,"scell-drawer");customElements.define("scell-drawer",class extends HTMLElement{constructor(){super();const t=this.attachShadow({mode:"open"});t.appendChild(i.content.cloneNode(!0)),this.aside=t.querySelector("aside"),this.backgroundCache=t.querySelector(".background-cache")}connectedCallback(){window.ShadyCSS&&ShadyCSS.styleElement(this),this.aside.style.width=this.getAttribute("width"),this.aside.style.transform="translateX(-100%)",this.backgroundCache.style.opacity=0,this.style.display=" none"}open(){this.style.display="",setTimeout(t=>{this.aside.style.transform="translateX(-1px)",this.backgroundCache.style.opacity=.3},32)}close(){setTimeout(t=>{this.aside.style.transform="translateX(-100%)",this.backgroundCache.style.opacity=0,setTimeout(t=>{this.style.display="none"},500)},32)}})}]);
+var drawerTemplateString = "<style>.background-cache {\n        position: absolute;\n        width: 100%;\n        height: 100%;\n        left: 0;\n        top: 0;\n        transition: opacity 0.2s 0.1s linear;\n        background: #000;\n        opacity: 0;\n        z-index: 1;\n    }  \n    aside {\n        position: absolute;\n        width: 50%;\n        border-left: 1px solid #333;\n        height: 100%;\n        transition: transform 0.3s  cubic-bezier(0.25, 0.46, 0.45, 0.94);\n        top: 0;\n        z-index: 2;\n        left: 0;\n    }\n\n    :host {\n        position: absolute;\n        width: 100%;\n        height: 100%;\n        left: 0;\n        top: 0;\n    }</style><aside><slot></slot></aside><div class=\"background-cache\"></div>";
+
+const drawerTemplate = document.createElement('template');
+drawerTemplate.innerHTML = drawerTemplateString;
+    
+if (window.ShadyCSS)
+    ShadyCSS.prepareTemplate(drawerTemplate,'scell-drawer');
+
+class Drawer extends HTMLElement {
+
+    constructor() {
+        super();
+        const $shadowRoot = this.attachShadow({mode:'open'});
+        $shadowRoot.appendChild(drawerTemplate.content.cloneNode(true));
+        this.aside = $shadowRoot.querySelector('aside');
+        this.backgroundCache = $shadowRoot.querySelector('.background-cache');
+    }
+
+    connectedCallback () {
+        if (window.ShadyCSS)
+            ShadyCSS.styleElement(this);
+            
+        this.aside.style.width = this.getAttribute('width');
+        this.aside.style.transform = 'translateX(-100%)';
+        this.backgroundCache.style.opacity = 0;
+        this.style.display = ' none';
+    }
+
+    open() {
+        this.style.display = '';
+        setTimeout( _ => {
+            this.aside.style.transform = 'translateX(-1px)';
+            this.backgroundCache.style.opacity = 0.3;
+        },32);
+    }
+
+    close () {
+        setTimeout( _ => {
+            this.aside.style.transform = 'translateX(-100%)';
+            this.backgroundCache.style.opacity = 0;
+            setTimeout(_ => {
+                this.style.display = 'none';
+            },500);
+        },32);
+    }
+}
+
+customElements.define('scell-drawer', Drawer);

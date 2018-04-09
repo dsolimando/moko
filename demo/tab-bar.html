@@ -15,16 +15,16 @@
         position: absolute;
         height: 100%;
         width: 100%;
-        background: #000;
+        background: #102B3F;
     }
 
     scell-tab-bar {
-        background: #000;
+        background: #102B3F;
         color: #fff;
     }
 
     scell-navigation-bar {
-        background: #000;
+        background: #102B3F;
         color: #fff;
         height: 50px;
     }
@@ -33,17 +33,21 @@
         padding: 10px;
         padding-top: 6  0px;
     }
+
+    moko-icon {
+        height: 18px;
+    }
     
 </style>
 <body>
     <scell-view id="container">
     </scell-view>
     
-    <scell-tab-bar>
-        <scell-tab title="tab1"></scell-tab>
-        <scell-tab title="tab2"></scell-tab>
-        <scell-tab title="tab3"></scell-tab>
-        <scell-tab title="tab4"></scell-tab>
+    <scell-tab-bar active-color="#A06CD5">
+        <scell-tab name="tab1" title="tab1"><moko-icon name="x"></moko-icon></scell-tab>
+        <scell-tab name="tab2" title="tab2"><moko-icon name="camera"></moko-icon></scell-tab>
+        <scell-tab name="tab3" title="tab3"><moko-icon name="trending-up"></moko-icon></scell-tab>
+        <scell-tab name="tab4" title="tab4"><moko-icon name="package"></moko-icon></scell-tab>
     </scell-tab-bar>
     <scell-zone-navigator container-selector="#container"></scell-zone-navigator> 
 </body>
@@ -80,5 +84,6 @@
         viewController:View4Controller,
         title:"Red"
     })
+    
 </script>
 </html> 

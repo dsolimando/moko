@@ -1,1 +1,77 @@
-!function(t){var e={};function i(n){if(e[n])return e[n].exports;var s=e[n]={i:n,l:!1,exports:{}};return t[n].call(s.exports,s,s.exports,i),s.l=!0,s.exports}i.m=t,i.c=e,i.d=function(t,e,n){i.o(t,e)||Object.defineProperty(t,e,{configurable:!1,enumerable:!0,get:n})},i.r=function(t){Object.defineProperty(t,"__esModule",{value:!0})},i.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return i.d(e,"a",e),e},i.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},i.p="",i(i.s=1)}([function(t,e){t.exports='<style>\n:host {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    top: 0;\n    left: 0;\n    box-sizing: border-box;\n    overflow: hidden;\n    -webkit-tap-highlight-color: transparent;\n}\n\n.shadow-pane {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    left: 0;\n    top: 0;\n    background: #000;\n    opacity: 0;\n    transition: opacity 0.2s;\n}\n</style>\n<div class="shadow-pane" style="display:none"></div>\n<slot></slot>\n<slot></slot>\n<slot></slot>\n'},function(t,e,i){"use strict";i.r(e),i.d(e,"View",function(){return r});var n=i(0),s=i.n(n);const o=document.createElement("template");o.innerHTML=s.a,window.ShadyCSS&&ShadyCSS.prepareTemplate(o,"scell-view");class r extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}).appendChild(o.content.cloneNode(!0))}render(){this.getAttribute("transition")&&(this.style.visibility=null),"cover-vertical"==this.getAttribute("transition")?setTimeout(t=>{this.style.transform="translateY(0)"}):"cover-horizontal"==this.getAttribute("transition")?setTimeout(t=>{this.style.transform="translateX(0)"}):"fade-in"==this.getAttribute("transition")&&setTimeout(t=>{this.style.opacity=1})}hide(){"cover-vertical"==this.getAttribute("transition")?setTimeout(t=>{this.style.transform="translateY(100%)"}):"cover-horizontal"==this.getAttribute("transition")?setTimeout(t=>{this.style.transform="translateX(100%)"}):"fade-in"==this.getAttribute("transition")&&setTimeout(t=>{this.style.opacity=0})}connectedCallback(){window.ShadyCSS&&ShadyCSS.styleElement(this),this.toopacity=getComputedStyle(this).opacity,"cover-vertical"==this.getAttribute("transition")?this.style.transform="translateY(100%)":"cover-horizontal"==this.getAttribute("transition")?this.style.transform="translateX(100%)":"fade-in"==this.getAttribute("transition")&&(this.style.opacity=0),this.getAttribute("transition")&&(this.style.visibility="hidden",this.style.transition="transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)")}}customElements.define("scell-view",r)}]);
+var templateString = "<style>:host {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    top: 0;\n    left: 0;\n    box-sizing: border-box;\n    overflow: hidden;\n    -webkit-tap-highlight-color: transparent;\n}\n\n.shadow-pane {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    left: 0;\n    top: 0;\n    background: #000;\n    opacity: 0;\n    transition: opacity 0.2s;\n}</style><div class=\"shadow-pane\" style=\"display:none\"></div><slot></slot><slot></slot><slot></slot>";
+
+const template = document.createElement('template');
+template.innerHTML = templateString;
+
+if (window.ShadyCSS)
+    ShadyCSS.prepareTemplate(template,'scell-view');
+    
+class View extends HTMLElement {
+
+    constructor() {
+        super();
+        const $shadowRoot = this.attachShadow({mode:'open'});
+        $shadowRoot.appendChild(template.content.cloneNode(true));
+        
+    }
+
+    render() {
+        
+        if (this.getAttribute('transition'))
+            this.style.visibility = null;
+
+        if (this.getAttribute("transition") == 'cover-vertical') {
+            setTimeout( _ => {
+                this.style.transform = 'translateY(0)';
+            });
+        } else if (this.getAttribute("transition") == 'cover-horizontal') {
+            setTimeout( _ => {
+                this.style.transform = 'translateX(0)';
+            });
+        } else if (this.getAttribute("transition") == 'fade-in') {
+            setTimeout( _ => {
+                this.style.opacity = 1;
+            });
+        }
+    }
+
+    hide () {
+        if (this.getAttribute('transition') == 'cover-vertical') {
+            setTimeout( _ => {
+                //this.style.transform = 'perspective(100px) translate3D(0,0,-10px)'
+                this.style.transform = 'translateY(100%)';
+                //this.style.opacity = 0.
+            });
+        } else if (this.getAttribute('transition') == 'cover-horizontal') {
+            setTimeout( _ => {
+                this.style.transform = 'translateX(100%)';
+            });
+        } else if (this.getAttribute("transition") == 'fade-in') {
+            setTimeout( _ => {
+                this.style.opacity = 0;
+            });
+        }
+    }
+    
+    connectedCallback() {
+        if (window.ShadyCSS)
+            ShadyCSS.styleElement(this);
+
+        this.toopacity = getComputedStyle(this).opacity;
+        
+        if (this.getAttribute("transition") == 'cover-vertical') {
+            this.style.transform = 'translateY(100%)';
+        } else if (this.getAttribute("transition") == 'cover-horizontal') {
+            this.style.transform = 'translateX(100%)';
+        } else if (this.getAttribute("transition") == 'fade-in') {
+            this.style.opacity = 0;
+        }
+        if (this.getAttribute("transition")) {
+            this.style.visibility = 'hidden';
+            this.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        }
+    }
+}
+customElements.define('scell-view',View);
+
+export { View };

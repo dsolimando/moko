@@ -1,1 +1,27 @@
-!function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},n.r=function(e){Object.defineProperty(e,"__esModule",{value:!0})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=1)}([function(e,t){e.exports='<style>\n    :host {\n        transform: rotate(45deg);\n        height: 12px;\n        width: 12px;\n        border: 2px solid;\n        border-width: 0 0 2px 2px;\n    }\n</style>\n<div class="back-button"></div>'},function(e,t,n){"use strict";n.r(t),n.d(t,"ScellBackButon",function(){return l});var r=n(0),o=n.n(r);const c=document.createElement("template");c.innerHTML=o.a,window.ShadyCSS&&ShadyCSS.prepareTemplate(c,"scell-back-button");class l extends HTMLElement{constructor(){super(),this.appendChild(c.content.cloneNode(!0))}connectedCallback(){window.ShadyCSS&&ShadyCSS.styleElement(this)}hide(){this.querySelector(".back-button").style.display="none"}}customElements.define("scell-back-button",l)}]);
+var backButtonTemplateString = "<style>:host {\n        transform: rotate(45deg);\n        height: 12px;\n        width: 12px;\n        border: 2px solid;\n        border-width: 0 0 2px 2px;\n    }</style><div class=\"back-button\"></div>";
+
+const backButtonTemplate = document.createElement('template');
+backButtonTemplate.innerHTML = backButtonTemplateString;
+    
+if (window.ShadyCSS)
+    ShadyCSS.prepareTemplate(backButtonTemplate,'scell-back-button');
+
+class ScellBackButon extends HTMLElement {
+    constructor() {
+        super();
+        this.appendChild(backButtonTemplate.content.cloneNode(true));
+    }
+
+    connectedCallback() {
+        if (window.ShadyCSS)
+            ShadyCSS.styleElement(this);
+    }
+
+    hide () {
+        this.querySelector('.back-button').style.display = 'none';
+    }
+}
+
+customElements.define('scell-back-button', ScellBackButon);
+
+export { ScellBackButon };

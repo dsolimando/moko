@@ -1,14 +1,22 @@
 import tabBarTemplateString from './tab-bar.html'
+import tabTemplateString from './tab.html'
 
 const tabBarTemplate = document.createElement('template')
 tabBarTemplate.innerHTML = tabBarTemplateString
-    
-if (window.ShadyCSS)
-    ShadyCSS.prepareTemplate(tabBarTemplate,'scell-tab-bar')
 
+const tabTemplate = document.createElement('template')
+tabTemplate.innerHTML = tabTemplateString
+    
+if (window.ShadyCSS) {
+    ShadyCSS.prepareTemplate(tabBarTemplate,'scell-tab-bar')
+    ShadyCSS.prepareTemplate(tabTemplate,'scell-tab')
+}
+    
 export class Tab extends HTMLElement {
     constructor() {
         super()
+        const shadowRoot = this.attachShadow({mode:'open'})
+        shadowRoot.appendChild(tabTemplate.content.cloneNode(true))
     }
 
     connectedCallback() {
@@ -16,18 +24,14 @@ export class Tab extends HTMLElement {
         if (window.ShadyCSS)
             ShadyCSS.styleElement(this);
             
-        if (this.getAttribute('icon')) {
-            const image = new Image()
-            image.onload = event => {
-                this.appendChild(image)
-            }
-            image.src = this.getAttribute('icon')
+        const $span = this.shadowRoot.querySelector('span')
+        if (this.getAttribute('title')) {
+            $span.innerHTML = this.getAttribute('title')
         }
 
-        if (this.getAttribute('title')) {
-            const span = document.createElement('span')
-            span.innerText = this.getAttribute('title')
-            this.appendChild(span)
+        const mokoIcon = this.querySelector('moko-icon')
+        if (mokoIcon) {
+            $span.style.fontSize = '0.7em';
         }
     }
 }
@@ -57,17 +61,14 @@ export class TabBar extends HTMLElement {
     connectedCallback() {
         if (window.ShadyCSS)
             ShadyCSS.styleElement(this);
+
         this.onclick = event => {
-            let name
-            if (event.target.matches('scell-tab > span')) {
-                name = event.target.parentElement.getAttribute('name')
+            const $source = event.target.closest('scell-tab')
+            if ($source) {
+                const name = $source.getAttribute('name')
                 this.resetActiveColorForTabs()
-                event.target.parentElement.style.color = this.getAttribute('active-color')          
-            } else if (event.target.matches('scell-tab')) {
-                name = event.target.getAttribute('name')
-                this.resetActiveColorForTabs()
-                event.target.style.color = this.getAttribute('active-color')
-            }
+                $source.style.color = this.getAttribute('active-color')          
+            } 
             this.dispatchEvent(new CustomEvent('scell-tab-selected', { detail:{ name } }))
         }
     }

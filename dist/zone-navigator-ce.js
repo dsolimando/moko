@@ -1,1 +1,37 @@
-!function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},n.r=function(e){Object.defineProperty(e,"__esModule",{value:!0})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){"use strict";n.r(t),n.d(t,"ZoneNavigator",function(){return r});class r extends HTMLElement{constructor(e){super(),e&&(this.$container=document.querySelector(e))}connectedCallback(){if(this.getAttribute("container-selector")&&(this.$container=document.querySelector(this.getAttribute("container-selector"))),!this.$container)throw new Error("no container id defined for this navigator")}push(e){e.props=e.props||{};const t=new e.viewController(e.props);t.navigator=this,this.$container.innerHTML="",this.$container.appendChild(t.render())}handleUrlRouting(e){Object.getOwnPropertyNames(e).forEach(t=>{this.handleRouting&&this.handleRouting(t,e[t])},this)}}customElements.define("scell-zone-navigator",r)}]);
+class ZoneNavigator extends HTMLElement {
+
+    constructor(containerSelector) {
+        super();
+        if (containerSelector)
+            this.$container = document.querySelector(containerSelector);
+    }
+
+    connectedCallback() {
+        if (this.getAttribute('container-selector')) {
+            this.$container = document.querySelector(this.getAttribute('container-selector'));
+        }
+        if (!this.$container) {
+            throw new Error('no container id defined for this navigator')
+        } 
+    }
+
+    push (state) {
+        state.props = state.props || {};
+        const controller = new state.viewController(state.props);
+        controller.navigator = this;
+        this.$container.innerHTML = '';
+        this.$container.appendChild(controller.render());
+    }
+
+    handleUrlRouting (routingData) {
+        Object.getOwnPropertyNames(routingData).forEach( key => {
+            if (this.handleRouting) {
+                this.handleRouting(key,routingData[key]);
+            }
+        },this);
+    }
+}
+
+customElements.define('scell-zone-navigator', ZoneNavigator);
+
+export { ZoneNavigator };

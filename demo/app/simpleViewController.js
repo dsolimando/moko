@@ -64,7 +64,7 @@ export class View4Controller {
 
     constructor() {
         this.$el = $template4.content.cloneNode(true)
-        this.$el.querySelector('scell-view').style.background = '#fff'
+        this.$el.querySelector('scell-view').style.background = '#E2CFEA'
         this.navigationBar = this.$el.querySelector('scell-navigation-bar')
         this.ham = this.navigationBar.querySelector('scell-hamburger-button')
         
