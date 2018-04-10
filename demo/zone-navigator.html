@@ -16,25 +16,29 @@
         color: #999;
         --moko-input-background-color: #fefefe;
     }
+
+    moko-icon {
+        height: 24px;
+    }
+
+    scell-view > div {
+        box-sizing: border-box;
+    }
 </style>
 
-<template id="view1">
+<template>
     <scell-view>
-        <moko-text-input icon="search"></moko-text-input>
-        <moko-icon name="x"></moko-icon>
-        <span>WBla bla bla</span>
-        <button>close</button>
-        <button id="b2">open</button>
+        <div>
+            <moko-text-input icon="search"></moko-text-input>
+            <moko-icon name="x"></moko-icon>
+            <span>Zone Navigator</span>
+        </div>
     </scell-view>
 </template> 
 
 <script type="module">
 
-    import {
-        RedSimpleViewController,
-        BlackSimpleViewController,
-        GreenSimpleViewController
-    } from './app/simpleViewController.js' 
+    import { EmptyViewController } from './app/simpleViewController.js' 
 
     import '../dist/text-input-ce.js'
     import '../dist/view-controller-ce.js'
@@ -45,24 +49,24 @@
     
     const startMovie = _ => {
         navigator.push({
-            viewController:RedSimpleViewController,
-            title:"Red"
+            props: { color: '#A06CD5'},
+            viewController:EmptyViewController
         })
 
         setTimeout( _ => {
-            // navigator.push({
-            //     viewController:BlackSimpleViewController,
-            //     title:"Black"
-            // })
-            // setTimeout( _ => {
-            //     navigator.push({
-            //         viewController:GreenSimpleViewController,
-            //         title:"Green"
-            //     })
-            //     setTimeout( _ => {
-            //         startMovie()
-            //     },1000)
-            // },1000)
+            navigator.push({
+                viewController:EmptyViewController,
+                props: { color: '#E2CFEA'}
+            })
+            setTimeout( _ => {
+                navigator.push({
+                    viewController:EmptyViewController,
+                    props: { color: '#6247AA'}
+                })
+                setTimeout( _ => {
+                    startMovie()
+                },1000)
+            },1000)
         },1000)
     }
 

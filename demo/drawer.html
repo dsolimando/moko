@@ -1,0 +1,68 @@
+<!DOCTYPE html> 
+<html> 
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<title>Mobile Components Tabbar Demo</title> 
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        
+    }
+    #drawer-content {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: #102B3F;
+        color: #fff;
+        font-size: 18px;
+        padding:20px;
+    }
+
+    scell-view {
+        background: #E2CFEA;
+    }
+
+    scell-navigation-bar {
+        background: #102B3F;
+        color: #fff;
+        height: 50px;
+        --moko-icon-stroke-width:2;
+    }
+
+    moko-icon {
+        height: 18px;
+        padding: 10px 10px 10px 0;
+    }
+    
+</style>
+<body>
+    <scell-view>
+        <scell-navigation-bar title="Drawer example">
+            <moko-icon name="menu"></moko-icon>
+        </scell-navigation-bar>
+        <scell-drawer width="75%">
+            <div id="drawer-content">
+                <span>hello world</span>
+            </div>
+        </scell-drawer>
+    </scell-view>
+</body>
+
+<script type="module" src="../dist/moko-ce.js"></script>
+
+<script defer>
+    const drawer = document.querySelector('scell-drawer')
+    const icon =  document.querySelector('moko-icon')
+    icon.addEventListener('click', event => {
+        drawer.open()
+    })
+    
+    drawer.onclick = event => {
+        drawer.close()
+    }
+</script>
+</html> 

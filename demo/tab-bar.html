@@ -27,6 +27,7 @@
         background: #102B3F;
         color: #fff;
         height: 50px;
+        --moko-icon-stroke-width:2;
     }
 
     #view1 {
@@ -52,20 +53,10 @@
     <scell-zone-navigator container-selector="#container"></scell-zone-navigator> 
 </body>
 
-<template id="view4">
+<template>
     <scell-view id="view1">
-        <span>WBla bla bla</span>
-        <button>close</button>
-        <button id="b2">open</button>
+        <span>Content Here</span>
     </scell-view>
-    <scell-navigation-bar title="My App">
-        <scell-hamburger-button color="#fff"></scell-hamburger-button>
-    </scell-navigation-bar>
-    <scell-drawer width="75%">
-        <div id="aa">
-            <span>hello</span>
-        </div>
-    </scell-drawer>
 </template> 
 
 <script type="module">
@@ -74,15 +65,49 @@
     import '../dist/zone-navigator-ce.js'
 
     import {
-        View4Controller
+        EmptyViewController
     } from './app/simpleViewController.js' 
 
     const navigator = document.querySelector('scell-zone-navigator')
     const tabbar = document.querySelector('scell-tab-bar')
     tabbar.navigator = navigator
+    
     navigator.push({
-        viewController:View4Controller,
-        title:"Red"
+        viewController:EmptyViewController
+    })
+
+    tabbar.selected = 'tab1'
+    tabbar.addEventListener('scell-tab-selected', event => {
+        switch(event.detail.name) {
+            case 'tab1':navigator.push({
+                            viewController:EmptyViewController,
+                            props: {
+                                color:'#E2CFEA'
+                            }
+                        })
+                        break
+            case 'tab2':navigator.push({
+                            viewController:EmptyViewController,
+                            props: {
+                                color:'#A06CD5'
+                            }
+                        })
+                        break
+            case 'tab3':navigator.push({
+                            viewController:EmptyViewController,
+                            props: {
+                                color:'#6247AA'
+                            }
+                        })
+                        break
+            case 'tab4':navigator.push({
+                            viewController:EmptyViewController,
+                            props: {
+                                color:'#062726'
+                            }
+                        })
+                        break
+        }
     })
     
 </script>
