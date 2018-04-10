@@ -1,10 +1,10 @@
 export default class PushNavigator  {
 
     push (state) {
-        state.props = state.props || {}
-        const controller = new state.viewController(state.props)
+        const props = state.props || {}
+        const controller = new state.viewController(props)
         controller.navigator = this
-        const view = controller.render()
+        let view = controller.render()
         document.body.appendChild(view)
 
         if (view.nodeName == '#document-fragment')
