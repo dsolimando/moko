@@ -55,6 +55,10 @@ export class TabBar extends HTMLElement {
     }
 
     setActiveByTabName (name) {
+        this.selected = name
+    }
+
+    set selected (name) {
         this.querySelector(`scell-tab[name="${name}"]`).style.color = this.getAttribute('active-color')
     }
 
@@ -67,9 +71,9 @@ export class TabBar extends HTMLElement {
             if ($source) {
                 const name = $source.getAttribute('name')
                 this.resetActiveColorForTabs()
-                $source.style.color = this.getAttribute('active-color')          
+                $source.style.color = this.getAttribute('active-color')  
+                this.dispatchEvent(new CustomEvent('scell-tab-selected', { detail:{ name } }))        
             } 
-            this.dispatchEvent(new CustomEvent('scell-tab-selected', { detail:{ name } }))
         }
     }
 }
