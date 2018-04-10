@@ -54,6 +54,4 @@ interface Controller {
 
 Please explore the [demo](https://github.com/dsolimando/moko/tree/master/demo) folder to find various code examples.
 
-## Live Demo
-
-To be done
+[Live Demo](https://dsolimando.github.io/moko/demo/demo.html)
