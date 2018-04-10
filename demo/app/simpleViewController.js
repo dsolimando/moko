@@ -21,7 +21,8 @@ export class EmptyViewController {
     constructor(props) {
         this.$el = $template.content.cloneNode(true)
         this.$el.querySelector('scell-view').style.background = props.color || '#E2CFEA'
-    
+        const $span = this.$el.querySelector('span')
+        $span && props.text && ($span.innerText = props.text)
     }
 
     render () {
