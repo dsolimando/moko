@@ -1,1 +1,1 @@
-export default class PushNavigator{push(e){e.props=e.props||{};const o=new e.viewController(e.props);o.navigator=this;const t=o.render();document.body.appendChild(t),"#document-fragment"==t.nodeName&&(t=document.body.lastElementChild),setTimeout(e=>{t.render()},64)}};
+export default class PushNavigator{push(e){const t=e.props||{},o=new e.viewController(t);o.navigator=this;let n=o.render();document.body.appendChild(n),"#document-fragment"==n.nodeName&&(n=document.body.lastElementChild),setTimeout(e=>{n.render()},64)}};

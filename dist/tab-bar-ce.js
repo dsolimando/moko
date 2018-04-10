@@ -1,4 +1,4 @@
-var tabBarTemplateString = "<slot></slot><style>:host {\n        position: absolute;\n        bottom: 0;\n        left: 0;\n        width: 100%;\n        height: 50px;\n        display: flex;\n        background: #fff;\n    }\n\n    ::slotted(scell-tab) {\n        align-self: center;\n        flex-grow: 1;\n        text-align: center;\n        cursor: pointer;\n        display: flex;\n        flex-direction: column;\n    }</style>";
+var tabBarTemplateString = "<slot></slot><style>:host {\n        -webkit-tap-highlight-color: rgba(0,0,0,0);\n        position: absolute;\n        bottom: 0;\n        left: 0;\n        width: 100%;\n        height: 50px;\n        display: flex;\n        background: #fff;\n    }\n\n    ::slotted(scell-tab) {\n        align-self: center;\n        flex-grow: 1;\n        text-align: center;\n        cursor: pointer;\n        display: flex;\n        flex-direction: column;\n    }</style>";
 
 var tabTemplateString = "<slot><!-- ICON SLOT --></slot><span><!-- title --></span><style>::slotted(moko-icon) {\n        flex-grow: 1;\n        height: 18px;\n        padding-bottom: 5px;\n    }\n    span {\n        flex-grow: 1;\n    }</style>";
 
@@ -56,6 +56,10 @@ class TabBar extends HTMLElement {
     }
 
     setActiveByTabName (name) {
+        this.selected = name;
+    }
+
+    set selected (name) {
         this.querySelector(`scell-tab[name="${name}"]`).style.color = this.getAttribute('active-color');
     }
 
@@ -68,9 +72,9 @@ class TabBar extends HTMLElement {
             if ($source) {
                 const name = $source.getAttribute('name');
                 this.resetActiveColorForTabs();
-                $source.style.color = this.getAttribute('active-color');          
+                $source.style.color = this.getAttribute('active-color');  
+                this.dispatchEvent(new CustomEvent('scell-tab-selected', { detail:{ name } }));        
             } 
-            this.dispatchEvent(new CustomEvent('scell-tab-selected', { detail:{ name } }));
         };
     }
 }
