@@ -61,4 +61,4 @@ export class NavigationBar extends HTMLElement {
     }
 }
 
-customElements.define('scell-navigation-bar',NavigationBar)
+customElements.define('moko-navigation-bar',NavigationBar)

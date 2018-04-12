@@ -7,8 +7,8 @@
 <title>Mobile Componenets Zone Navigatore Demo</title> 
 
 <body>
-    <scell-view id="container"></scell-view>
-    <scell-zone-navigator container-selector="#container"></scell-zone-navigator> 
+    <moko-view id="container"></scell-view>
+    <moko-zone-navigator container-selector="#container"></scell-zone-navigator> 
 </body>
 
 <style>
@@ -31,7 +31,7 @@
 </style>
 
 <template>
-    <scell-view>
+    <moko-view>
         <div>
             <span>Zone Navigator</span>
         </div>
@@ -47,7 +47,7 @@
     import '../dist/zone-navigator-ce.js'
     import '../dist/icon-ce.js'
     
-    const navigator = document.querySelector('scell-zone-navigator')
+    const navigator = document.queryselector('moko-zone-navigator')
     
     const startMovie = _ => {
         navigator.push({

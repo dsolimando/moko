@@ -32,4 +32,4 @@ export class ZoneNavigator extends HTMLElement {
     }
 }
 
-customElements.define('scell-zone-navigator', ZoneNavigator)
+customElements.define('moko-zone-navigator', ZoneNavigator)

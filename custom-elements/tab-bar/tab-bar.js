@@ -35,7 +35,7 @@ export class Tab extends HTMLElement {
         }
     }
 }
-customElements.define('scell-tab', Tab )
+customElements.define('moko-tab', Tab )
 
 export class TabBar extends HTMLElement {
     constructor() {
@@ -78,4 +78,4 @@ export class TabBar extends HTMLElement {
     }
 }
 
-customElements.define('scell-tab-bar', TabBar) 
+customElements.define('moko-tab-bar', TabBar) 

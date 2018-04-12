@@ -25,4 +25,4 @@ export class ScellHamburgerButton extends HTMLElement {
     }
 }
 
-customElements.define('scell-hamburger-button', ScellHamburgerButton)
+customElements.define('moko-hamburger-button', ScellHamburgerButton)

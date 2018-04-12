@@ -69,7 +69,7 @@ export class StackNavigator {
 
         setTimeout (_ => {
             if (handleNavBar) {
-                const navigationBar = rootView.querySelector('scell-navigation-bar')
+                const navigationBar = rootView.queryselector('moko-navigation-bar')
                 navigationBar.leftSlotAssignedNode.hide()
                 navigationBar.shadowRoot.querySelector('.center-zone > span').style.transition = 'transform 0.2s  cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
                 rootView.style.paddingTop = getComputedStyle(navigationBar).height
@@ -90,9 +90,9 @@ export class StackNavigator {
         
         const $navBar = this.activeController.render().insertAdjacentHTML(
             'afterbegin',
-            `<scell-navigation-bar anim-back-title="true" title="${title}" back-title="${backTitle}"><scell-back-button/></scell-navigation-bar>`
+            `<moko-navigation-bar anim-back-title="true" title="${title}" back-title="${backTitle}"><moko-back-button/></scell-navigation-bar>`
         )
-        this.activeController.render().querySelector('scell-navigation-bar').navigator = this
+        this.activeController.render().queryselector('moko-navigation-bar').navigator = this
     }
 
     insertNavigationBarForPop() {
@@ -109,9 +109,9 @@ export class StackNavigator {
         
         const $navBar = this.passiveController.render().insertAdjacentHTML(
             'afterbegin',
-            `<scell-navigation-bar title="${title}" back-title="${backTitle}"><scell-back-button></scell-back-button></scell-navigation-bar>`
+            `<moko-navigation-bar title="${title}" back-title="${backTitle}"><moko-back-button></scell-back-button></scell-navigation-bar>`
         )
-        this.activeController.render().querySelector('scell-navigation-bar').navigator = this
+        this.activeController.render().queryselector('moko-navigation-bar').navigator = this
     }
 
     /**
@@ -137,9 +137,9 @@ export class StackNavigator {
         let navBarActiveView,activeTitleSpan,activeBackSpan,passiveTitleSpan,backButton
         
         if (handleNavBar) {
-            const navBarPassiveView = passiveView.querySelector('scell-navigation-bar')
+            const navBarPassiveView = passiveView.queryselector('moko-navigation-bar')
             activeView.style.paddingTop = getComputedStyle(navBarPassiveView).height
-            navBarActiveView = activeView.querySelector('scell-navigation-bar')
+            navBarActiveView = activeView.queryselector('moko-navigation-bar')
             activeTitleSpan = navBarActiveView.shadowRoot.querySelector('.center-zone > span')
             activeBackSpan = navBarActiveView.shadowRoot.querySelector('.back-zone > span')
             
@@ -216,8 +216,8 @@ export class StackNavigator {
         const handleNavBar = previousState && handleNavigationBar(previousState)
         
         if (handleNavBar) {
-            navBarPassiveView = passiveView.querySelector('scell-navigation-bar')
-            navBarActiveView = activeView.querySelector('scell-navigation-bar')
+            navBarPassiveView = passiveView.queryselector('moko-navigation-bar')
+            navBarActiveView = activeView.queryselector('moko-navigation-bar')
             activeTitleSpan = navBarActiveView.shadowRoot.querySelector('.center-zone > span')
             activeBackSpan = navBarActiveView.shadowRoot.querySelector('.back-zone > span')
             passiveTitleSpan = navBarPassiveView.shadowRoot.querySelector('.center-zone > span')
@@ -256,7 +256,7 @@ export class StackNavigator {
             }
 
             if (handleNavBar) {
-                const navbar = this.passiveController.render().querySelector('scell-navigation-bar')
+                const navbar = this.passiveController.render().queryselector('moko-navigation-bar')
                 navbar.leftSlotAssignedNode.hide()
             }
             setTimeout( _ => {

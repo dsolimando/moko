@@ -45,4 +45,4 @@ class Drawer extends HTMLElement {
     }
 }
 
-customElements.define('scell-drawer', Drawer)
+customElements.define('moko-drawer', Drawer)

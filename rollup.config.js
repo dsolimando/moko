@@ -13,6 +13,6 @@ export default {
         string(
             {include: '**/*.svg'}
         ),
-        //uglify(),
+        uglify(),
     ]
 }

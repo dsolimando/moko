@@ -72,4 +72,4 @@ export class View extends HTMLElement {
         }
     }
 }
-customElements.define('scell-view',View)
+customElements.define('moko-view',View)

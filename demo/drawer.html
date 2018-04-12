@@ -40,11 +40,11 @@
     
 </style>
 <body>
-    <scell-view>
-        <scell-navigation-bar title="Drawer example">
+    <moko-view>
+        <moko-navigation-bar title="Drawer example">
             <moko-icon name="menu"></moko-icon>
         </scell-navigation-bar>
-        <scell-drawer width="75%">
+        <moko-drawer width="75%">
             <div id="drawer-content">
                 <span>hello world</span>
             </div>
@@ -55,7 +55,7 @@
 <script type="module" src="../dist/moko-ce.js"></script>
 
 <script defer>
-    const drawer = document.querySelector('scell-drawer')
+    const drawer = document.queryselector('moko-drawer')
     const icon =  document.querySelector('moko-icon')
     icon.addEventListener('click', event => {
         drawer.open()

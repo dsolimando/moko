@@ -22,4 +22,4 @@ export class ScellBackButon extends HTMLElement {
     }
 }
 
-customElements.define('scell-back-button', ScellBackButon)
+customElements.define('moko-back-button', ScellBackButon)

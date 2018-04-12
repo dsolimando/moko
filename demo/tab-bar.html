@@ -41,20 +41,20 @@
     
 </style>
 <body>
-    <scell-view id="container">
+    <moko-view id="container">
     </scell-view>
     
-    <scell-tab-bar active-color="#A06CD5">
-        <scell-tab name="tab1" title="tab1"><moko-icon name="x"></moko-icon></scell-tab>
-        <scell-tab name="tab2" title="tab2"><moko-icon name="camera"></moko-icon></scell-tab>
-        <scell-tab name="tab3" title="tab3"><moko-icon name="trending-up"></moko-icon></scell-tab>
-        <scell-tab name="tab4" title="tab4"><moko-icon name="package"></moko-icon></scell-tab>
+    <moko-tab-bar active-color="#A06CD5">
+        <moko-tab name="tab1" title="tab1"><moko-icon name="x"></moko-icon></scell-tab>
+        <moko-tab name="tab2" title="tab2"><moko-icon name="camera"></moko-icon></scell-tab>
+        <moko-tab name="tab3" title="tab3"><moko-icon name="trending-up"></moko-icon></scell-tab>
+        <moko-tab name="tab4" title="tab4"><moko-icon name="package"></moko-icon></scell-tab>
     </scell-tab-bar>
-    <scell-zone-navigator container-selector="#container"></scell-zone-navigator> 
+    <moko-zone-navigator container-selector="#container"></scell-zone-navigator> 
 </body>
 
 <template>
-    <scell-view id="view1">
+    <moko-view id="view1">
         <span>Content Here</span>
     </scell-view>
 </template> 
@@ -68,8 +68,8 @@
         EmptyViewController
     } from './app/simpleViewController.js' 
 
-    const navigator = document.querySelector('scell-zone-navigator')
-    const tabbar = document.querySelector('scell-tab-bar')
+    const navigator = document.queryselector('moko-zone-navigator')
+    const tabbar = document.queryselector('moko-tab-bar')
     tabbar.navigator = navigator
     
     navigator.push({
