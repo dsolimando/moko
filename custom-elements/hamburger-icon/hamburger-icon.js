@@ -4,9 +4,9 @@ const hamburgerTemplate = document.createElement('template')
 hamburgerTemplate.innerHTML = hamburgerTemplateString
     
 if (window.ShadyCSS)
-    ShadyCSS.prepareTemplate(hamburgerTemplate,'scell-hamburger-button')
+    ShadyCSS.prepareTemplate(hamburgerTemplate,'moko-hamburger-button')
 
-export class ScellHamburgerButton extends HTMLElement {
+export class MokoHamburgerButton extends HTMLElement {
     constructor() {
         super()
         const shadowRoot = this.attachShadow({mode:'open'})
@@ -25,4 +25,4 @@ export class ScellHamburgerButton extends HTMLElement {
     }
 }
 
-customElements.define('moko-hamburger-button', ScellHamburgerButton)
+customElements.define('moko-hamburger-button', MokoHamburgerButton)

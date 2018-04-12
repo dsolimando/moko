@@ -4,7 +4,7 @@ const navTemplate = document.createElement('template')
 navTemplate.innerHTML = navTemplateString
 
 if (window.ShadyCSS)
-        ShadyCSS.prepareTemplate(navTemplate,'scell-navigation-bar')
+        ShadyCSS.prepareTemplate(navTemplate,'moko-navigation-bar')
 
 export class NavigationBar extends HTMLElement {
 

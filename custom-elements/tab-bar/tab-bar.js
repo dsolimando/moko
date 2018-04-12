@@ -8,8 +8,8 @@ const tabTemplate = document.createElement('template')
 tabTemplate.innerHTML = tabTemplateString
     
 if (window.ShadyCSS) {
-    ShadyCSS.prepareTemplate(tabBarTemplate,'scell-tab-bar')
-    ShadyCSS.prepareTemplate(tabTemplate,'scell-tab')
+    ShadyCSS.prepareTemplate(tabBarTemplate,'moko-tab-bar')
+    ShadyCSS.prepareTemplate(tabTemplate,'moko-tab')
 }
     
 export class Tab extends HTMLElement {
@@ -45,13 +45,13 @@ export class TabBar extends HTMLElement {
     }
 
     resetActiveColorForTabs() {
-        Array.prototype.forEach.call(this.querySelectorAll('scell-tab'), elem => {
+        Array.prototype.forEach.call(this.querySelectorAll('moko-tab'), elem => {
             elem.style.color = null
         })
     }
 
     setActive(index) {
-        this.querySelectorAll('scell-tab')[index].style.color = this.getAttribute('active-color')
+        this.querySelectorAll('moko-tab')[index].style.color = this.getAttribute('active-color')
     }
 
     setActiveByTabName (name) {
@@ -59,7 +59,7 @@ export class TabBar extends HTMLElement {
     }
 
     set selected (name) {
-        this.querySelector(`scell-tab[name="${name}"]`).style.color = this.getAttribute('active-color')
+        this.querySelector(`moko-tab[name="${name}"]`).style.color = this.getAttribute('active-color')
     }
 
     connectedCallback() {
@@ -67,12 +67,12 @@ export class TabBar extends HTMLElement {
             ShadyCSS.styleElement(this);
 
         this.onclick = event => {
-            const $source = event.target.closest('scell-tab')
+            const $source = event.target.closest('moko-tab')
             if ($source) {
                 const name = $source.getAttribute('name')
                 this.resetActiveColorForTabs()
                 $source.style.color = this.getAttribute('active-color')  
-                this.dispatchEvent(new CustomEvent('scell-tab-selected', { detail:{ name } }))        
+                this.dispatchEvent(new CustomEvent('moko-tab-selected', { detail:{ name } }))        
             } 
         }
     }

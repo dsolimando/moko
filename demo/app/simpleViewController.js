@@ -20,7 +20,7 @@ export class EmptyViewController {
 
     constructor(props) {
         this.$el = $template.content.cloneNode(true)
-        this.$el.queryselector('moko-view').style.background = props.color || '#E2CFEA'
+        this.$el.querySelector('moko-view').style.background = props.color || '#E2CFEA'
         const $span = this.$el.querySelector('span')
         $span && props.text && ($span.innerText = props.text)
     }

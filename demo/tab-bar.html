@@ -18,12 +18,12 @@
         background: #102B3F;
     }
 
-    scell-tab-bar {
+    moko-tab-bar {
         background: #102B3F;
         color: #fff;
     }
 
-    scell-navigation-bar {
+    moko-navigation-bar {
         background: #102B3F;
         color: #fff;
         height: 50px;
@@ -42,21 +42,21 @@
 </style>
 <body>
     <moko-view id="container">
-    </scell-view>
+    </moko-view>
     
     <moko-tab-bar active-color="#A06CD5">
-        <moko-tab name="tab1" title="tab1"><moko-icon name="x"></moko-icon></scell-tab>
-        <moko-tab name="tab2" title="tab2"><moko-icon name="camera"></moko-icon></scell-tab>
-        <moko-tab name="tab3" title="tab3"><moko-icon name="trending-up"></moko-icon></scell-tab>
-        <moko-tab name="tab4" title="tab4"><moko-icon name="package"></moko-icon></scell-tab>
-    </scell-tab-bar>
-    <moko-zone-navigator container-selector="#container"></scell-zone-navigator> 
+        <moko-tab name="tab1" title="tab1"><moko-icon name="x"></moko-icon></moko-tab>
+        <moko-tab name="tab2" title="tab2"><moko-icon name="camera"></moko-icon></moko-tab>
+        <moko-tab name="tab3" title="tab3"><moko-icon name="trending-up"></moko-icon></moko-tab>
+        <moko-tab name="tab4" title="tab4"><moko-icon name="package"></moko-icon></moko-tab>
+    </moko-tab-bar>
+    <moko-zone-navigator container-selector="#container"></moko-zone-navigator> 
 </body>
 
 <template>
     <moko-view id="view1">
         <span>Content Here</span>
-    </scell-view>
+    </moko-view>
 </template> 
 
 <script type="module">
@@ -68,8 +68,8 @@
         EmptyViewController
     } from './app/simpleViewController.js' 
 
-    const navigator = document.queryselector('moko-zone-navigator')
-    const tabbar = document.queryselector('moko-tab-bar')
+    const navigator = document.querySelector('moko-zone-navigator')
+    const tabbar = document.querySelector('moko-tab-bar')
     tabbar.navigator = navigator
     
     navigator.push({
@@ -77,7 +77,7 @@
     })
 
     tabbar.selected = 'tab1'
-    tabbar.addEventListener('scell-tab-selected', event => {
+    tabbar.addEventListener('moko-tab-selected', event => {
         switch(event.detail.name) {
             case 'tab1':navigator.push({
                             viewController:EmptyViewController,

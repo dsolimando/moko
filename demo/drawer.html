@@ -22,11 +22,11 @@
         padding:20px;
     }
 
-    scell-view {
+    moko-view {
         background: #E2CFEA;
     }
 
-    scell-navigation-bar {
+    moko-navigation-bar {
         background: #102B3F;
         color: #fff;
         height: 50px;
@@ -43,19 +43,19 @@
     <moko-view>
         <moko-navigation-bar title="Drawer example">
             <moko-icon name="menu"></moko-icon>
-        </scell-navigation-bar>
+        </moko-navigation-bar>
         <moko-drawer width="75%">
             <div id="drawer-content">
                 <span>hello world</span>
             </div>
-        </scell-drawer>
-    </scell-view>
+        </moko-drawer>
+    </moko-view>
 </body>
 
 <script type="module" src="../dist/moko-ce.js"></script>
 
 <script defer>
-    const drawer = document.queryselector('moko-drawer')
+    const drawer = document.querySelector('moko-drawer')
     const icon =  document.querySelector('moko-icon')
     icon.addEventListener('click', event => {
         drawer.open()

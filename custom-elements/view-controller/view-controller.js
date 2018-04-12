@@ -4,7 +4,7 @@ const template = document.createElement('template')
 template.innerHTML = templateString
 
 if (window.ShadyCSS)
-    ShadyCSS.prepareTemplate(template,'scell-view')
+    ShadyCSS.prepareTemplate(template,'moko-view')
     
 export class View extends HTMLElement {
 

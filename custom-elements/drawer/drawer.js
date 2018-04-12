@@ -4,7 +4,7 @@ const drawerTemplate = document.createElement('template')
 drawerTemplate.innerHTML = drawerTemplateString
     
 if (window.ShadyCSS)
-    ShadyCSS.prepareTemplate(drawerTemplate,'scell-drawer')
+    ShadyCSS.prepareTemplate(drawerTemplate,'moko-drawer')
 
 class Drawer extends HTMLElement {
 

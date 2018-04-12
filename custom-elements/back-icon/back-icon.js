@@ -4,9 +4,9 @@ const backButtonTemplate = document.createElement('template')
 backButtonTemplate.innerHTML = backButtonTemplateString
     
 if (window.ShadyCSS)
-    ShadyCSS.prepareTemplate(backButtonTemplate,'scell-back-button')
+    ShadyCSS.prepareTemplate(backButtonTemplate,'moko-back-button')
 
-export class ScellBackButon extends HTMLElement {
+export class MokoBackButon extends HTMLElement {
     constructor() {
         super()
         this.appendChild(backButtonTemplate.content.cloneNode(true))
@@ -22,4 +22,4 @@ export class ScellBackButon extends HTMLElement {
     }
 }
 
-customElements.define('moko-back-button', ScellBackButon)
+customElements.define('moko-back-button', MokoBackButon)
