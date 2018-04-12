@@ -36,7 +36,7 @@ const template = `
   height: 877px;
   width: 423px;
   position: relative;
-  margin: 30px auto;
+  margin: 0 auto;
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
 }
