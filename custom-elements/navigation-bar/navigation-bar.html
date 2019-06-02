@@ -25,11 +25,14 @@
     .right-zone {
         flex-grow: 1;
         width: 20%;
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
     }
 
     :host {
         display: flex;
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -48,5 +51,5 @@
     <span></span>
 </div>
 <div class="right-zone">
-    <slot></slot>
+    <slot name="right"></slot>
 </div>
