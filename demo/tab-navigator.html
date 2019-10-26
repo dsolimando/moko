@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <title>Title</title>
+    <style>
+      body {
+        font-family: '-apple-system', 'HelveticaNeue';
+      }
+    </style>
+  </head>
+  <body style="margin: 0;">
+    <div style="height: 100vh; width: 100vw;">
+      <moko-tab-navigator active-color="red">
+        <moko-tab-route
+          icon="trending-up"
+          title="Home"
+          path="home1"
+          component="demo-home"
+        >
+        </moko-tab-route>
+        <moko-tab-route
+          icon="package"
+          title="Home2"
+          path="home2"
+          component="demo-home2"
+        >
+        </moko-tab-route>
+        <moko-tab-route
+          icon="trending-down"
+          title="Home3"
+          path="home3"
+          component="demo-home3"
+        >
+        </moko-tab-route>
+      </moko-tab-navigator>
+    </div>
+  </body>
+  <script type="module">
+    import '../components/navigators/tab-navigator.js'
+    import { customElement } from '../components/common/builder.js'
+    import '../dist/icon-ce.js'
+
+    customElements.define(
+      'demo-home',
+      customElement(
+        () => `<div style="height: 200%; background: yellow">Home1</div>`
+      )
+    )
+    customElements.define(
+      'demo-home2',
+      customElement(
+        () => `<div style="height: 100%; background: aqua">Home2</div>`
+      )
+    )
+    customElements.define(
+      'demo-home3',
+      customElement(
+        () => `<div style="height: 100%; background: brown">Home3</div>`
+      )
+    )
+  </script>
+</html>

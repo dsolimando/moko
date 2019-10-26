@@ -1,54 +1,77 @@
 # Moko
-Moko is a lightweight WebComponents based mobile JS lib inspired by native mobile SDK's.
 
-It provides the basic stuffs you need in order to develop a mobile web app. Things like:
+Moko is a lightweight WebComponents based navigation library
+highly inspired by [React Navigation](https://reactnavigation.org).
 
-* a basic view with built-in render animations 
-* a tab-bar
-* a navigation bar
-* a drawer
-* an hamburger icon
+It supports three kinds of navigators:
 
-Each of these web components are available as ES6 modules (see the [dist](https://github.com/dsolimando/moko/tree/master/dist) folder).
+- switch navigator
+- stack navigator
+- tab navigator
 
-### moko - native SDK's comparison table
+##Switch navigator
 
-| Moko          | iOS              | Android                  |
-| ------------- |----------------  | ---                      |
-| [View](https://github.com/dsolimando/moko/blob/master/custom-elements/view-controller/view-controller.js)          | UIViewController | Activity                 |
-| [TabBar](https://github.com/dsolimando/moko/blob/master/custom-elements/tab-bar/tab-bar.js)        | UITabBar         | BottomNavigationView     |
-| [NavigationBar](https://github.com/dsolimando/moko/blob/master/custom-elements/navigation-bar/navigation-bar.js) | UINavigationBar | Toolbar |
-| [Drawer](https://github.com/dsolimando/moko/blob/master/custom-elements/drawer/drawer.js) | -- |  DrawerLayout |
+Switch navigator only show one content at a time, each route displaying a different content. Content is not cached
 
-## Navigators
+![](./doc/switch-navigator.gif)
 
-Moko also provides [React Navigation](https://reactnavigation.org) inspired navigators:
+Code example:
 
-* a push navigator
-* a zone navigator
-* a stack navigator
-
-A navigator handles routing aspects and transitions between views. Typical scenario are:
-
-* Pushing a view on screen with an from bottom or from right animation (push navigator)
-* Replacing the content of a view with another content ( zone navigator)
-* Managing navigation through a hierarchy of views (navigation controller)
-
-A navigator expose the **push** method in order no navigate to an other view. That method takes an object as parameter that must contain at least a **viewController** attribute that reference a controller class.
-
-```Javascript
-navigator.push({
-    viewController:MyViewController
-})
+```html
+<moko-switch-navigator>
+  <moko-route path="view1/:name" component="demo-view1">
+    <span>diego</span>
+  </moko-route>
+  <moko-route path="view2/:name" component="demo-view2"></moko-route>
+  <moko-route path="view3/:name" component="demo-view3"></moko-route>
+</moko-switch-navigator>
 ```
 
-The viewController class must implement the following interface:
+A navigator contains multiple `<moko-route>`. A route has two mandatory attributes `path` and `component`.
 
-```Javascript
-interface Controller {
-  View render()
-}
+- `path` associates the route to an url fragment. Each time an url match that path, the content associated with that route will be displayed. The path can contain placeholders
+- `component` name of the Web Component that will be displayed when an url match the route's path.
+
+Navigation is triggered either with standard `<a href="#some-route">Click</a>` or with safer moko provided custom element
+`<moko-link to="some-route""></moko-link>`. `moko-link` supports navigator nesting.
+
+If the url fragment is empty, the first route will be rendered.
+
+By default a navigator will take all space available in his node ancestor.
+
+### Server side rendering
+
+First `moko-route` element can contain markup that will be displayed before corresponding web component is rendered properly.
+It allows to server side render content and make the page SSO friendly.
+
+### Demo
+
+See [switchNavigator.html](./demo/switchNavigator.html) for a complete example.
+
+## Stack navigator
+
+Stack navigator will display new content on top of previous one while navigating.
+
+![](./doc/stack-navigator.gif)
+
+Code example:
+
+```html
+<moko-stack-navigator>
+  <moko-route path="path1" component="demo-el1"></moko-route>
+  <moko-route path="path2" component="demo-el2"></moko-route>
+  <moko-route path="path3" component="demo-el3"></moko-route>
+</moko-stack-navigator>
 ```
+
+## Tab navigator
+
+Tab navigator will display a tabbar at the bottom of the screen. Each click on a tab entry will
+display different content.
+
+
+
+Each of those are available as custom elements through ES6 modules (see the [dist](https://github.com/dsolimando/moko/tree/master/dist) folder).
 
 ## Examples
 

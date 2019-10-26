@@ -1,83 +1,88 @@
-<!DOCTYPE html> 
-<html> 
-
-<meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
-<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<title>Mobile Components Demo</title> 
-
-<style>
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    moko-navigation-bar {
-        background: #102B3F;
-        color: #fff;
-        height: 50px;
-    }
-
-    moko-view > div {
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script
+      type="module"
+      src="../components/navigators/stack-navigator.js"
+    ></script>
+    <style>
+      body {
+        font-family: '-apple-system', 'HelveticaNeue';
+      }
+      a {
+        color: #42d9c8;
+        font-weight: bolder;
+        display: block;
         padding: 20px;
-        box-sizing: border-box;
-    }
-
-    moko-view button {
-        width: 300px;
+        font-size: 24px;
+      }
+      button {
+        width: 200px;
+        margin: 51px;
         height: 50px;
-        background-color: #333;
-        color: #fff;
-        font-size: 16px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body style="margin:0;">
+    <div style="height: 100vh; width: 100vw">
+      <moko-stack-navigator>
+        <moko-route path="path1" component="demo-el1"></moko-route>
+        <moko-route path="path2" component="demo-el2"></moko-route>
+        <moko-route path="path3" component="demo-el3"></moko-route>
+      </moko-stack-navigator>
+    </div>
+  </body>
+  <script>
+    class Element1 extends HTMLElement {
+      constructor() {
+        super()
+      }
+
+      connectedCallback() {
+        this.style.background = '#931621'
+        this.style.height = '100%'
+        this.style.width = '100%'
+        this.innerHTML = `<a href="#path2">Path 1</a><a href="#path3">Path 2</a>`
+      }
+    }
+    customElements.define('demo-el1', Element1)
+
+    class Element2 extends HTMLElement {
+      constructor() {
+        super()
+      }
+
+      connectedCallback() {
+        this.style.background = '#28464B'
+        this.style.height = '100%'
+        this.style.width = '100%'
+        this.innerHTML = `<button onclick="history.back()">Back</button>`
+      }
     }
 
-</style>
-<body></body>
+    customElements.define('demo-el2', Element2)
 
-<template>
-    <moko-view>
-        <div>
-            <span>Stack navigator</span>
-            <br>
-            <br>
-            <button>Back</button>
-        </div>
-    </moko-view>
-</template>
+    class Element3 extends HTMLElement {
+      constructor() {
+        super()
+      }
 
-<script type="module">
+      connectedCallback() {
+        this.style.background = '#42D9C8'
+        this.style.height = '100%'
+        this.style.width = '100%'
+        this.innerHTML = `<button onclick="history.back()">Back</button>`
+      }
+    }
 
-import '../dist/view-controller-ce.js'
-import '../dist/back-icon-ce.js'
-import '../dist/navigation-bar-ce.js'
-
-import { StackNavigator } from '../dist/stack-navigator.js'
-
-import { SimpleViewController } from './app/simpleViewController.js'
-
-const navigator = new StackNavigator('cover-horizontal', {
-    options: { title: 'Index'},
-    props: { color: '#E2CFEA'},
-    viewController: SimpleViewController
-})
-
-setTimeout(
-    _ => {
-        navigator.push({
-            options: { title: 'Page1'},
-            props: { color: '#A06CD5'},
-            viewController: SimpleViewController
-        })
-
-        setTimeout(
-            _ => {
-                navigator.push({
-                    options: { title: 'Page1'},
-                    props: { color: '#6247AA'},
-                    viewController: SimpleViewController
-                })
-            },
-        1000)
-    },
-1000)
-</script>
-</html> 
+    customElements.define('demo-el3', Element3)
+  </script>
+</html>
