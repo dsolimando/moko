@@ -9,7 +9,7 @@ It supports three kinds of navigators:
 - stack navigator
 - tab navigator
 
-##Switch navigator
+## Switch navigator
 
 Switch navigator only show one content at a time, each route displaying a different content. Content is not cached
 
