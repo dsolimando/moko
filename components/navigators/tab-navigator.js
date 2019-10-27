@@ -64,8 +64,18 @@ export class TabNavigator extends NavigatorElement {
     this.style.width = 'inherit'
     this.style.position = 'relative'
 
-    if (this.getContentElement()) {
+    // Wrap SSR content
+    const initialContent = this.getContentElement()
+    if (initialContent) {
       this.matchedRouteLocation = this.routes[0].path
+      initialContent.remove()
+      const element = document.createElement('div')
+      element.style.display = 'block'
+      element.style.overflow = 'scroll'
+      element.style.width = 'inherit'
+      element.style.height = 'inherit'
+      element.appendChild(initialContent)
+      this.appendChild(element)
     }
 
     this.containers = {}
@@ -87,6 +97,7 @@ export class TabNavigator extends NavigatorElement {
       }
       this.$tabbar.appendChild($mokoTab)
     })
+    this.$tabbar.selected = this.matchedRouteLocation
 
     if (location.hash) {
       this.handleEvent()
@@ -101,7 +112,7 @@ export class TabNavigator extends NavigatorElement {
   }
 
   getContentElement() {
-    return this.lastElementChild.firstElementChild
+    return this.lastElementChild.firstElementChild || this.lastElementChild
   }
 
   extractChildRoutes() {
