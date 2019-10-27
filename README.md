@@ -124,7 +124,6 @@ Each navigator is available as Web Components through ES6 modules (see the [dist
 
 ## Live Demos
 
-[Switch Navigator](http://plnkr.co/edit/3EWAOLDUtFfWOaupwtdZ?p=preview)
-[Stack Navigator](http://plnkr.co/edit/7CJPynCaB8wyWmMa3EKw?p=preview)
-[Tab  Navigator](http://plnkr.co/edit/vC5DSIE2aKzkRlayJTmF?p=preview)
-[Live Demo](https://dsolimando.github.io/moko/demo/demo.html)
+* [Switch Navigator](http://plnkr.co/edit/3EWAOLDUtFfWOaupwtdZ?p=preview)
+* [Stack Navigator](http://plnkr.co/edit/7CJPynCaB8wyWmMa3EKw?p=preview)
+* [Tab  Navigator](http://plnkr.co/edit/vC5DSIE2aKzkRlayJTmF?p=preview)
