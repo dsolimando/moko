@@ -1,55 +1,54 @@
 <!DOCTYPE html>
 <html>
+  <title>Mobile Componenets Switch Navigatore Demo</title>
 
-<title>Mobile Componenets Switch Navigatore Demo</title>
-
-<body>
-<aside>
-    <ul>
+  <body>
+    <aside>
+      <ul>
         <li><a href="#view1/diego">View 1</a></li>
         <li><a href="#view2/rocco">View 2</a></li>
         <li><a href="#view3/manu">View 3</a></li>
-    </ul>
-</aside>
-<main>
-    <moko-switch-navigator>
-        <moko-route path="view1/:name" component="demo-view1" >
-            <span>diego</span>
+      </ul>
+    </aside>
+    <main>
+      <moko-switch-navigator>
+        <moko-route path="view1/:name" component="demo-view1">
+          <span>diego</span>
         </moko-route>
-        <moko-route path="view2/:name" component="demo-view2" ></moko-route>
-        <moko-route path="view3/:name" component="demo-view3" ></moko-route>
-    </moko-switch-navigator>
-</main>
+        <moko-route path="view2/:name" component="demo-view2"></moko-route>
+        <moko-route path="view3/:name" component="demo-view3"></moko-route>
+      </moko-switch-navigator>
+    </main>
+  </body>
 
-
-
-</body>
-
-<script type="module">
-    customElements.define('demo-view1', class extends HTMLElement {
-      constructor() {
-        super();
+  <script type="module">
+    customElements.define(
+      'demo-view1',
+      class extends HTMLElement {
+        connectedCallback() {
+          this.innerHTML = '<span>' + this.getAttribute('name') + '</span>'
+        }
       }
-      connectedCallback() {
-        this.innerHTML = '<span>'+this.getAttribute('name')+'</span>'
+    )
+    customElements.define(
+      'demo-view2',
+      class extends HTMLElement {
+        connectedCallback() {
+          this.innerHTML = '<span>' + this.getAttribute('name') + '</span>'
+        }
       }
-    })
-    customElements.define('demo-view2', class extends HTMLElement {
-      constructor() {
-        super();
+    )
+    customElements.define(
+      'demo-view3',
+      class extends HTMLElement {
+        connectedCallback() {
+          this.innerHTML = '<span>' + this.getAttribute('name') + '</span>'
+        }
       }
-      connectedCallback() {
-        this.innerHTML = '<span>'+this.getAttribute('name')+'</span>'
-      }
-    })
-    customElements.define('demo-view3', class extends HTMLElement {
-      constructor() {
-        super();
-      }
-      connectedCallback() {
-        this.innerHTML = '<span>'+this.getAttribute('name')+'</span>'
-      }
-    })
-</script>
-<script type="module" src="../components/navigators/switch-navigator.js"></script>
+    )
+  </script>
+  <script
+    type="module"
+    src="../components/navigators/switch-navigator.js"
+  ></script>
 </html>

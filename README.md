@@ -64,6 +64,10 @@ Code example:
 </moko-stack-navigator>
 ```
 
+### Demo
+
+See [stackNavigator.html](./demo/stack-navigator.html) for a complete example.
+
 ### Server side rendering
 
 First `moko-route` element can contain markup that will be displayed before corresponding web component is rendered properly.
@@ -105,6 +109,10 @@ Code example:
 </moko-tab-navigator>
 ```
 
+### Demo
+
+See [switchNavigator.html](./demo/tab-navigator.html) for a complete example.
+
 ### Server side rendering
 
 `moko-tab-navigator` element can contain markup as last child that will be displayed before corresponding web component is rendered properly.
@@ -114,8 +122,9 @@ It allows to server side render content and make the page SSO friendly.
 
 Each navigator is available as Web Components through ES6 modules (see the [dist](https://github.com/dsolimando/moko/tree/master/dist) folder).
 
-## Examples
+## Live Demos
 
-Please explore the [demo](https://github.com/dsolimando/moko/tree/master/demo) folder to find various code examples.
-
+[Switch Navigator](http://plnkr.co/edit/3EWAOLDUtFfWOaupwtdZ?p=preview)
+[Stack Navigator](http://plnkr.co/edit/7CJPynCaB8wyWmMa3EKw?p=preview)
+[Tab  Navigator](http://plnkr.co/edit/IfNNxbTMUo98fvYWCkaZ?p=preview)
 [Live Demo](https://dsolimando.github.io/moko/demo/demo.html)
