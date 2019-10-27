@@ -38,7 +38,8 @@
     "build:ce": "webpack --mode production --module-bind html=raw-loader --module-bind svg=raw-loader components/**/*.js -o ./dist/moko.min.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "components"
   ],
   "prettier": {
     "semi": false,

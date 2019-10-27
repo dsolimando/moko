@@ -39,7 +39,7 @@ export class StackNavigator extends NavigatorElement {
       matchedRoute
     } = this.searchMatchingRoute()
 
-    // Route always in the dom but empty route => display back firstRoute
+    // Route always in the dom but empty route => display back initialContentElement
     if (!matchedResult && this.nextRoute) {
       this.onscreenFirstRoute()
     }
@@ -60,7 +60,8 @@ export class StackNavigator extends NavigatorElement {
       setTimeout(() => {
         this.appendChild(this.nextRoute)
         setTimeout(() => {
-          if (!this.modal) this.firstRoute.style.transform = 'translateX(-30%)'
+          if (!this.modal)
+            this.initialContentElement.style.transform = 'translateX(-30%)'
           this.showNextRouteElement(element)
         }, 16)
       })
@@ -78,7 +79,7 @@ export class StackNavigator extends NavigatorElement {
   onscreenFirstRoute() {
     if (!this.modal) {
       this.nextRoute.style.transform = 'translateX(100%)'
-      this.firstRoute.style.transform = 'translateX(0)'
+      this.initialContentElement.style.transform = 'translateX(0)'
     } else {
       this.nextRoute.style.transform = 'translateY(100%)'
     }
@@ -98,10 +99,10 @@ export class StackNavigator extends NavigatorElement {
     const wrapper = createWrapperElement()
     wrapper.appendChild(element)
 
-    this.firstRoute
-      ? this.firstRoute.replaceWith(wrapper)
+    this.initialContentElement
+      ? this.initialContentElement.replaceWith(wrapper)
       : this.appendChild(wrapper)
-    this.firstRoute = wrapper
+    this.initialContentElement = wrapper
   }
 
   constructor() {
@@ -116,7 +117,7 @@ export class StackNavigator extends NavigatorElement {
 
   connectedCallback() {
     super.connectedCallback()
-    this.firstRoute = this.getContentElement()
+    this.initialContentElement = this.getContentElement()
     if (this.connectedCallbackNumCalls++ === 0) {
       setTimeout(() => {
         this.renderFirstRoute()
