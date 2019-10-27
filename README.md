@@ -64,14 +64,55 @@ Code example:
 </moko-stack-navigator>
 ```
 
+### Server side rendering
+
+First `moko-route` element can contain markup that will be displayed before corresponding web component is rendered properly.
+It allows to server side render content and make the page SSO friendly.
+
 ## Tab navigator
 
 Tab navigator will display a tabbar at the bottom of the screen. Each click on a tab entry will
 display different content.
 
+![](./doc/tabbar-navigator.gif)
 
+Code example:
 
-Each of those are available as custom elements through ES6 modules (see the [dist](https://github.com/dsolimando/moko/tree/master/dist) folder).
+```html
+<moko-tab-navigator active-color="red">
+  <moko-tab-route
+    icon="trending-up"
+    title="Home"
+    path="home1"
+    component="demo-home"
+  >
+  </moko-tab-route>
+  <moko-tab-route
+    icon="package"
+    title="Home2"
+    path="home2"
+    component="demo-home2"
+  >
+  </moko-tab-route>
+  <moko-tab-route
+    icon="trending-down"
+    title="Home3"
+    path="home3"
+    component="demo-home3"
+  >
+  </moko-tab-route>
+  <div style="height: 200%; background: yellow">Home1</div>
+</moko-tab-navigator>
+```
+
+### Server side rendering
+
+`moko-tab-navigator` element can contain markup as last child that will be displayed before corresponding web component is rendered properly.
+It allows to server side render content and make the page SSO friendly.
+
+### Using navigators in your  webpage
+
+Each navigator is available as Web Components through ES6 modules (see the [dist](https://github.com/dsolimando/moko/tree/master/dist) folder).
 
 ## Examples
 
