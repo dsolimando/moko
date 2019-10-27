@@ -1,68 +1,89 @@
-<!DOCTYPE html> 
-<html> 
+<!DOCTYPE html>
+<html>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, height=device-height, initial-scale=1.0"
+  />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
 
-<meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
-<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
-<meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Mobile Components Tabbar Demo</title>
 
-<title>Mobile Components Tabbar Demo</title> 
-
-<style>
+  <style>
     body {
-        font-family: Arial, Helvetica, sans-serif;
-        
+      font-family: Arial, Helvetica, sans-serif;
     }
     #drawer-content {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        background: #102B3F;
-        color: #fff;
-        font-size: 18px;
-        padding:20px;
-    }
-
-    moko-view {
-        background: #E2CFEA;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: #102b3f;
+      color: #fff;
+      font-size: 18px;
+      padding: 20px;
     }
 
     moko-navigation-bar {
-        background: #102B3F;
-        color: #fff;
-        height: 50px;
-        --moko-icon-stroke-width:2;
+      background: #102b3f;
+      color: #fff;
+      height: 50px;
+      --moko-icon-stroke-width: 2;
     }
 
     moko-icon {
-        height: 18px;
-        padding: 10px 10px 10px 0;
+      height: 18px;
+      padding: 10px 10px 10px 0;
     }
-    
-</style>
-<body>
-    <moko-view>
-        <moko-navigation-bar title="Drawer example">
-            <moko-icon name="menu"></moko-icon>
-        </moko-navigation-bar>
-        <moko-drawer width="75%">
-            <div id="drawer-content">
-                <span>hello world</span>
-            </div>
-        </moko-drawer>
-    </moko-view>
-</body>
+  </style>
+  <body style="margin:0;height: 100vh;width: 100vw">
+    <moko-switch-navigator>
+      <moko-route path="path1" component="demo-view1"></moko-route>
+      <moko-route path="path2" component="demo-view2"></moko-route>
+      <demo-view1></demo-view1>
+    </moko-switch-navigator>
+    <moko-navigation-bar title="Drawer example">
+      <moko-icon name="menu"></moko-icon>
+    </moko-navigation-bar>
+    <moko-drawer width="75%">
+      <div id="drawer-content" style="display: flex; flex-direction: column">
+        <span>hello world</span>
+        <a href="#path1">View 1</a>
+        <a href="#path2">View 2</a>
+      </div>
+    </moko-drawer>
+  </body>
 
-<script type="module" src="../dist/moko-ce.js"></script>
+  <script type="module">
+    import { customElement } from '../components/common/builder.js'
+    import '../dist/drawer.min.js'
+    import '../dist/icon.min.js'
+    import '../dist/navigation-bar.min.js'
+    import '../dist/switch-navigator.min.js'
 
-<script defer>
     const drawer = document.querySelector('moko-drawer')
-    const icon =  document.querySelector('moko-icon')
+    const icon = document.querySelector('moko-icon')
+
     icon.addEventListener('click', event => {
-        drawer.open()
+      drawer.open()
     })
-    
-    drawer.onclick = event => {
-        drawer.close()
-    }
-</script>
-</html> 
+
+    document.addEventListener('moko-switch-view', () => {
+      setTimeout(() => drawer.close())
+    })
+
+    customElements.define(
+      'demo-view1',
+      customElement(
+        () => '<div style="height:100%; width: 100%; background: brown"></div>'
+      )
+    )
+
+    customElements.define(
+      'demo-view2',
+      customElement(
+        () =>
+          '<div style="height:100%; width: 100%; background: aquamarine"></div>'
+      )
+    )
+  </script>
+</html>

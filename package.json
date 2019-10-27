@@ -1,8 +1,8 @@
 {
   "name": "@solidx/moko",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": {
-    "name": "Damien Solimandi",
+    "name": "Damien Solimando",
     "email": "dsolimando@gmail.com"
   },
   "homepage": "https://github.com/dsolimando/moko",
@@ -19,30 +19,31 @@
     "uglify-es": "*",
     "webpack-cli": "^3.3.2",
     "webpack": "^4.32.2",
-    "raw-loader": "^2.0.0"
+    "raw-loader": "^2.0.0",
+    "prettier": "^1.17.1"
   },
   "scripts": {
     "prepublish": "npm run all",
     "all": "npm-run-all clean build:*",
     "clean": "rm -rf ./dist/*",
-    "build:back-icon": "rollup -c ./rollup.config.js -f es ./custom-elements/back-icon/back-icon.js  --o ./dist/back-icon-ce.js",
-    "build:drawer": "rollup -c ./rollup.config.js -f es ./custom-elements/drawer/drawer.js --o ./dist/drawer-ce.js",
-    "build:hamburger-icon": "rollup -c ./rollup.config.js -f es ./custom-elements/hamburger-icon/hamburger-icon.js --o ./dist/hamburger-icon-ce.js",
-    "build:navigation-bar": "rollup -c ./rollup.config.js -f es ./custom-elements/navigation-bar/navigation-bar.js --o ./dist/navigation-bar-ce.js",
-    "build:tab-bar": "rollup -c ./rollup.config.js -f es ./custom-elements/tab-bar/tab-bar.js --o ./dist/tab-bar-ce.js",
-    "build:view": "rollup -c ./rollup.config.js -f es ./custom-elements/view-controller/view-controller.js --o ./dist/view-controller-ce.js",
-    "build:zone-navigator": "rollup -c ./rollup.config.js -f es ./custom-elements/zone-navigator/zone-navigator.js --o ./dist/zone-navigator-ce.js",
-    "build:text-input": "rollup -c ./rollup.config.js  -f es ./custom-elements/text-input/input.js --o ./dist/text-input-ce.js",
-    "build:icon": "rollup -c ./rollup.config.js  -f es ./custom-elements/feather-icons/icon.js --o ./dist/icon-ce.js",
-    "build:push-navigator": "uglifyjs js/push-navigator.js -o dist/push-navigator.js -c -m",
-    "build:stack-navigator": "uglifyjs js/stack-navigator.js -o dist/stack-navigator.js -c -m",
-    "build:routing": "uglifyjs js/routing.js -o dist/routing.js -c -m",
-    "build:moko-mixins": "uglifyjs js/mc-mixins.js -o dist/moko-mixins.js -c -m",
+    "build:drawer": "rollup -c ./rollup.config.js -f es components/drawer/drawer.js --o ./dist/drawer.min.js",
+    "build:navigation-bar": "rollup -c ./rollup.config.js -f es components/navigation-bar/navigation-bar.js --o ./dist/navigation-bar.min.js",
+    "build:text-input": "rollup -c ./rollup.config.js  -f es components/text-input/input.js --o ./dist/text-input.min.js",
+    "build:icon": "rollup -c ./rollup.config.js  -f es components/feather-icons/icon.js --o ./dist/icon.min.js",
+    "build:stack-navigator": "rollup -c ./rollup.config.js  -f es components/navigators/stack-navigator.js --o ./dist/stack-navigator.min.js",
+    "build:switch-navigator": "rollup -c ./rollup.config.js  -f es components/navigators/switch-navigator.js --o ./dist/switch-navigator.min.js",
+    "build:tab-navigator": "rollup -c ./rollup.config.js  -f es components/navigators/tab-navigator.js --o ./dist/tab-navigator.min.js",
+    "build:all-navigators": "webpack --mode production components/navigators/*navigator.js --o ./dist/moko-navigators.min.js",
     "tar": "tar -czvf moko-$(VERSION).tar.gz dist",
-    "build:ce": "webpack --mode production --module-bind html=raw-loader --module-bind svg=raw-loader ./custom-elements/**/*.js -o ./dist/moko-ce.js",
-    "build:navigators": "webpack --mode production --module-bind html=raw-loader  ./js/*.js ./custom-elements/zone-navigator/zone-navigator.js  -o ./dist/moko-navigators.js"
+    "build:ce": "webpack --mode production --module-bind html=raw-loader --module-bind svg=raw-loader components/**/*.js -o ./dist/moko.min.js"
   },
   "files": [
-    "dist"
-  ]
+    "dist",
+    "components"
+  ],
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2
+  }
 }
