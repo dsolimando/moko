@@ -111,7 +111,7 @@ Code example:
 
 ### Demo
 
-See [switchNavigator.html](./demo/tab-navigator.html) for a complete example.
+See [tabNavigator.html](./demo/tab-navigator.html) for a complete example.
 
 ### Server side rendering
 
