@@ -118,7 +118,7 @@ See [switchNavigator.html](./demo/tab-navigator.html) for a complete example.
 `moko-tab-navigator` element can contain markup as last child that will be displayed before corresponding web component is rendered properly.
 It allows to server side render content and make the page SSO friendly.
 
-### Using navigators in your  webpage
+### Using navigators in your webpage
 
 Each navigator is available as Web Components through ES6 modules (see the [dist](https://github.com/dsolimando/moko/tree/master/dist) folder).
 
@@ -126,5 +126,5 @@ Each navigator is available as Web Components through ES6 modules (see the [dist
 
 [Switch Navigator](http://plnkr.co/edit/3EWAOLDUtFfWOaupwtdZ?p=preview)
 [Stack Navigator](http://plnkr.co/edit/7CJPynCaB8wyWmMa3EKw?p=preview)
-[Tab  Navigator](http://plnkr.co/edit/IfNNxbTMUo98fvYWCkaZ?p=preview)
+[Tab  Navigator](http://plnkr.co/edit/vC5DSIE2aKzkRlayJTmF?p=preview)
 [Live Demo](https://dsolimando.github.io/moko/demo/demo.html)
