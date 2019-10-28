@@ -49,7 +49,16 @@
     customElements.define(
       'demo-home',
       customElement(
-        () => `<div style="height: 200%; background: yellow">Home1</div>`
+        () =>
+          new Promise(resolve =>
+            setTimeout(
+              () =>
+                resolve(
+                  `<div style="height: 200%; background: yellow">Home1</div>`
+                ),
+              200
+            )
+          )
       )
     )
     customElements.define(

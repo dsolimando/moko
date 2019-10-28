@@ -9,12 +9,12 @@ export const customElement = (render, attributes = []) => {
       this.connectedCallbackNumCalls = 0
     }
 
-    connectedCallback() {
+    async connectedCallback() {
       if (this.connectedCallbackNumCalls > 0) {
         return
       }
       const bindedRender = render.bind(this)
-      this.toRender = bindedRender(this)
+      this.toRender = await bindedRender(this)
       if (typeof this.toRender === 'string') {
         this.innerHTML = this.toRender
       } else if (
