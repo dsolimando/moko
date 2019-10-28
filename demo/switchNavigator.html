@@ -11,12 +11,10 @@
       </ul>
     </aside>
     <main>
-      <moko-switch-navigator>
+      <moko-switch-navigator default-path="view1/rocco">
         <moko-route path="view1/:name" component="demo-view1">
           <span>diego</span>
         </moko-route>
-        <moko-route path="view1/:name" component="demo-view2"></moko-route>
-        <moko-route path="view1/:name" component="demo-view3"></moko-route>
       </moko-switch-navigator>
     </main>
   </body>
@@ -24,22 +22,6 @@
   <script type="module">
     customElements.define(
       'demo-view1',
-      class extends HTMLElement {
-        connectedCallback() {
-          this.innerHTML = '<span>' + this.getAttribute('name') + '</span>'
-        }
-      }
-    )
-    customElements.define(
-      'demo-view2',
-      class extends HTMLElement {
-        connectedCallback() {
-          this.innerHTML = '<span>' + this.getAttribute('name') + '</span>'
-        }
-      }
-    )
-    customElements.define(
-      'demo-view3',
       class extends HTMLElement {
         connectedCallback() {
           this.innerHTML = '<span>' + this.getAttribute('name') + '</span>'

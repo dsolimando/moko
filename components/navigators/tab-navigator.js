@@ -64,6 +64,8 @@ export class TabNavigator extends NavigatorElement {
     this.style.width = 'inherit'
     this.style.position = 'relative'
 
+    const defaultPath = this.getAttribute('default-path')
+
     const initialContent = this.getContentElement()
     if (initialContent) {
       initialContent.remove()
@@ -92,7 +94,7 @@ export class TabNavigator extends NavigatorElement {
     if (location.hash) {
       this.handleEvent()
     } else {
-      this.navigate(this.routes[0].path)
+      this.navigate(defaultPath || this.routes[0].path)
     }
 
     this.$tabbar.addEventListener('moko-tab-selected', event => {

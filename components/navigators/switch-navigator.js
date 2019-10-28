@@ -10,8 +10,12 @@ export class MokoSwitchNavigator extends NavigatorElement {
     this.style.width = 'inherit'
     this.style.position = 'relative'
 
+    const defaultPath = this.getAttribute('default-path')
+
     if (this.getContentElement()) {
-      this.matchedRouteLocation = this.routes[0].path
+      this.matchedRouteLocation = defaultPath || this.routes[0].path
+    } else if (defaultPath) {
+      this.navigate(defaultPath)
     }
   }
 
