@@ -14,8 +14,12 @@ export class MokoSwitchNavigator extends NavigatorElement {
 
     if (this.getContentElement()) {
       this.matchedRouteLocation = defaultPath || this.routes[0].path
-    } else if (defaultPath) {
-      this.navigate(defaultPath)
+    } else {
+      if (location.hash) {
+        this.handleEvent()
+      } else {
+        this.navigate(defaultPath || this.routes[0].path)
+      }
     }
   }
 
