@@ -11,8 +11,9 @@ function createWrapperElement(id) {
   wrapperElement.style.position = 'absolute'
   wrapperElement.style.width = 'inherit'
   wrapperElement.style.height = 'inherit'
+  wrapperElement.style.overflow = 'hidden'
   wrapperElement.style.transition =
-    'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+    'transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1)'
   id && wrapperElement.setAttribute('id', id)
   return wrapperElement
 }
@@ -32,6 +33,14 @@ export class StackNavigator extends NavigatorElement {
     return this._modal
   }
 
+  setUrlData(element) {
+    if (this.urlData) {
+      Object.keys(this.urlData).forEach(key => {
+        element.setAttribute(key, this.urlData[key])
+      })
+    }
+  }
+
   handleEvent(event) {
     const {
       matchedResult,
@@ -48,9 +57,7 @@ export class StackNavigator extends NavigatorElement {
       const element = document.createElement(matchedRoute.customElement)
       element.style.display = 'block'
 
-      Object.keys(matchedResult.urlData).forEach(key => {
-        element.setAttribute(key, matchedResult.urlData[key])
-      })
+      this.setUrlData(element)
 
       this.nextRoute = createWrapperElement()
       this.nextRoute.innerHTML = ''
@@ -74,6 +81,7 @@ export class StackNavigator extends NavigatorElement {
     } else {
       this.nextRoute.style.transform = 'translateX(100%)'
     }
+    setTimeout(() => this.nextRoute.remove, 500)
   }
 
   onscreenFirstRoute() {
@@ -95,6 +103,7 @@ export class StackNavigator extends NavigatorElement {
 
   renderFirstRoute() {
     const element = document.createElement(this.routes[0].customElement)
+    this.setUrlData(element)
     element.style.display = 'block'
     const wrapper = createWrapperElement()
     wrapper.appendChild(element)
@@ -120,6 +129,8 @@ export class StackNavigator extends NavigatorElement {
     this.initialContentElement = this.getContentElement()
     if (this.connectedCallbackNumCalls++ === 0) {
       setTimeout(() => {
+        this.matchedRouteLocation =
+          this.getAttribute('default-path') || this.routes[0].path
         this.renderFirstRoute()
       })
     }

@@ -131,7 +131,7 @@ export class TabNavigator extends NavigatorElement {
         element.style.overflow = 'scroll'
         element.style.width = 'inherit'
         element.style.height = 'inherit'
-        Object.keys(matchedResult.urlData).forEach(key => {
+        Object.keys(this.urlData).forEach(key => {
           element.setAttribute(key, matchedResult.urlData[key])
         })
         this.containers[matchedRoute.path] = element
@@ -149,6 +149,31 @@ export class TabNavigator extends NavigatorElement {
       this.$tabbar.resetActiveColorForTabs()
       this.$tabbar.selected = matchedRoute.path
     }
+  }
+
+  syncHref(element = this) {
+    const $nestedNavigators = [
+      ...element.querySelectorAll(
+        'moko-tab-navigator, moko-switch-navigator, moko-stack-navigator'
+      )
+    ]
+    const tabPath =
+      location.href.split('#')[0] +
+      '#' +
+      this.getAncestorMatchedRoute() +
+      (this.getAncestorMatchedRoute() ? '/' : '') +
+      this.matchedRouteLocation
+
+    $nestedNavigators.reduce((path, navigator) => {
+      const nextPath = `${path}/${navigator.matchedRouteLocation}`
+
+      if (nextPath !== location.href) {
+        history.pushState({}, nextPath, nextPath)
+      } else {
+        history.replaceState({}, nextPath, nextPath)
+      }
+      return nextPath
+    }, tabPath)
   }
 }
 

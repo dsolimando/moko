@@ -10,6 +10,7 @@ tabBarTemplate.innerHTML = `<slot></slot>
         height: 50px;
         display: flex;
         background: #fff;
+        padding-bottom: env(safe-area-inset-bottom);
     }
 
     ::slotted(moko-tab) {

@@ -15,8 +15,8 @@ export class MokoSwitchNavigator extends NavigatorElement {
     if (this.getContentElement()) {
       this.matchedRouteLocation = defaultPath || this.routes[0].path
     } else {
-      if (location.hash) {
-        this.handleEvent()
+      if (this.getCurrentRelativeLocation()) {
+        setTimeout(() => this.handleEvent())
       } else {
         this.navigate(defaultPath || this.routes[0].path)
       }
@@ -39,7 +39,7 @@ export class MokoSwitchNavigator extends NavigatorElement {
 
       const element = document.createElement(matchedRoute.customElement)
 
-      Object.keys(matchedResult.urlData).forEach(key => {
+      Object.keys(this.urlData).forEach(key => {
         element.setAttribute(key, matchedResult.urlData[key])
       })
       this.appendChild(element)

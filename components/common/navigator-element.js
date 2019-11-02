@@ -31,11 +31,6 @@ function isLocationPathMatchingRoute(currentRelativeLocation, routePattern) {
   }
 }
 
-const once = f => {
-  let i = 0
-  return () => i++ < 1 && f()
-}
-
 /**
  * @typedef matchedResult
  * @property {MokoRoute} matchedRouteLocation
@@ -79,6 +74,9 @@ export class NavigatorElement extends HTMLElement {
     if (!this.navigators) {
       this.navigators = this.searchAncestor([this])
     }
+    this.urlData = {
+      ...this.navigators.reduce((prev, n) => ({ ...prev, ...n.urlData }), {})
+    }
     addEventListener('hashchange', this)
   }
 
@@ -91,42 +89,14 @@ export class NavigatorElement extends HTMLElement {
   }
 
   getAncestorMatchedRoute() {
-    return this.navigators.length > 1
-      ? this.navigators[this.navigators.length - 2].matchedRouteLocation
-      : ''
+    return this.navigators
+      .slice(0, this.navigators.length - 1)
+      .reduce((prev, n) => prev + '/' + n.matchedRouteLocation, '')
   }
 
-  syncHref(element = this) {
-    const $nestedNavigators = [
-      ...element.querySelectorAll(
-        'moko-route[selected="true"], moko-tab-route[selected="true"]'
-      )
-    ]
-    const tabPath =
-      location.href.split('#')[0] +
-      '#' +
-      this.getAncestorMatchedRoute() +
-      (this.getAncestorMatchedRoute() ? '/' : '') +
-      this.matchedRouteLocation
-
-    $nestedNavigators.reduce((path, route) => {
-      const nextPath = `${path}/${route.path}`
-
-      if (nextPath !== location.href) {
-        history.pushState({}, nextPath, nextPath)
-      } else {
-        history.replaceState({}, nextPath, nextPath)
-      }
-      return nextPath
-    }, tabPath)
-  }
-
-  /**
-   * @return {matchedResult}
-   */
-  searchMatchingRoute() {
-    let ancestorMatchedRoute = this.getAncestorMatchedRoute()
-
+  getCurrentRelativeLocation(
+    ancestorMatchedRoute = this.getAncestorMatchedRoute()
+  ) {
     let currentRelativeLocation = location.hash
       .substring(1) // removing leading #
       .replace(ancestorMatchedRoute, '')
@@ -135,6 +105,19 @@ export class NavigatorElement extends HTMLElement {
       currentRelativeLocation[0] === '/'
         ? currentRelativeLocation.replace('/', '')
         : currentRelativeLocation
+
+    return currentRelativeLocation
+  }
+
+  /**
+   * @return {matchedResult}
+   */
+  searchMatchingRoute() {
+    let ancestorMatchedRoute = this.getAncestorMatchedRoute()
+
+    let currentRelativeLocation = this.getCurrentRelativeLocation(
+      ancestorMatchedRoute
+    )
 
     let matchedRoute
     let matchedResult
@@ -157,15 +140,19 @@ export class NavigatorElement extends HTMLElement {
           matchedRoute = route
           matchedRoute.selected = true
 
-          matchedRouteLocation = `${ancestorMatchedRoute}${
-            ancestorMatchedRoute ? '/' : ''
-          }${matchedResult.match[0]}`
+          matchedRouteLocation = matchedResult.match[0]
           routeChanged = matchedRouteLocation !== this.matchedRouteLocation
           break
         }
       }
 
-      if (routeChanged) this.matchedRouteLocation = matchedRouteLocation
+      if (routeChanged) {
+        this.matchedRouteLocation = matchedRouteLocation
+        this.urlData = {
+          ...this.urlData,
+          ...matchedResult.urlData
+        }
+      }
     }
 
     return {

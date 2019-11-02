@@ -27,17 +27,19 @@ Code example:
 </moko-switch-navigator>
 ```
 
-A navigator contains multiple `<moko-route>`. A route has two mandatory attributes `path` and `component`.
+A navigator contains one or multiple `<moko-route>`. A route has two mandatory attributes `path` and `component`.
 
-- `path` associates the route to an url fragment. Each time an url match that path, the content associated with that route will be displayed. The path can contain placeholders
-- `component` name of the Web Component that will be displayed when an url match the route's path.
+- `path` associates the route to an url fragment. Each time an url match that path, the component associated with that route will be displayed. The path can contain placeholders
+- `component` name of the Web Component to be displayed for a matching route.
 
 Navigation is triggered either with standard `<a href="#some-route">Click</a>` or with safer moko provided custom element
-`<moko-link to="some-route""></moko-link>`. `moko-link` supports navigator nesting.
+`<moko-link to="some-route""></moko-link>`. `moko-link` supports navigator nesting and only relative (to the closest parent navigator) path must be provided.
 
-If the url fragment is empty, the first route will be rendered.
+If the url fragment is empty, the component associated with the first route will be rendered.
 
-By default a navigator will take all space available in his node ancestor.
+It's possible to define a default route to render with the `default-path` attribute.
+
+By default a navigator will take all the space available in his node ancestor.
 
 ### Server side rendering
 
