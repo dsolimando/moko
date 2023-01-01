@@ -17,9 +17,9 @@
     "rollup-plugin-string": "*",
     "rollup-plugin-uglify": "*",
     "uglify-es": "*",
-    "webpack-cli": "^3.3.9",
-    "webpack": "^4.41.2",
-    "raw-loader": "^3.1.0",
+    "webpack-cli": "^5.0.1",
+    "webpack": "^5.75.0",
+    "raw-loader": "^4.0.2",
     "prettier": "^1.18.2"
   },
   "scripts": {
